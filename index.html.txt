@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AURALIA COSMETICS</title>
+
+    <meta name="description"
+          content="AURALIA COSMETICS - Mỹ phẩm dành cho vẻ đẹp riêng của bạn.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="header-container">
+
+        <a href="#" class="logo">
+            AURALIA
+            <span>COSMETICS</span>
+        </a>
+
+        <nav class="navigation">
+
+            <a href="#home">Trang chủ</a>
+            <a href="#products">Sản phẩm</a>
+            <a href="#about">Về Auralia</a>
+            <a href="#contact">Liên hệ</a>
+
+        </nav>
+
+        <button class="cart-button" onclick="openCart()">
+
+            <span class="cart-icon">🛍</span>
+
+            Giỏ hàng
+
+            <span id="cartCount">0</span>
+
+        </button>
+
+        <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+            ☰
+        </button>
+
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+
+        <a href="#home" onclick="closeMobileMenu()">Trang chủ</a>
+        <a href="#products" onclick="closeMobileMenu()">Sản phẩm</a>
+        <a href="#about" onclick="closeMobileMenu()">Về Auralia</a>
+        <a href="#contact" onclick="closeMobileMenu()">Liên hệ</a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-container">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                BEAUTY • CONFIDENCE • YOU
+            </p>
+
+            <h1>
+                Đẹp theo
+                <br>
+                <span>cách của bạn.</span>
+            </h1>
+
+            <p class="hero-description">
+
+                AURALIA đồng hành cùng bạn khám phá
+                và tỏa sáng vẻ đẹp riêng với những sản phẩm
+                mỹ phẩm hiện đại, tinh tế và phù hợp
+                với phong cách cá nhân.
+
+            </p>
+
+            <a href="#products" class="primary-button">
+
+                KHÁM PHÁ SẢN PHẨM
+
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <div class="hero-circle"></div>
+
+            <div class="hero-product">
+
+                <div class="bottle-cap"></div>
+
+                <div class="bottle-body">
+
+                    <div class="bottle-label">
+
+                        <small>AURALIA</small>
+
+                        <strong>GLOW</strong>
+
+                        <span>BEAUTY SERUM</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="floating-text">
+                YOUR<br>
+                BEAUTY
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BENEFITS ================= -->
+
+<section class="benefits">
+
+    <div class="benefit">
+
+        <div class="benefit-icon">✦</div>
+
+        <div>
+            <h3>Chất lượng</h3>
+            <p>Sản phẩm được chọn lọc kỹ càng</p>
+        </div>
+
+    </div>
+
+
+    <div class="benefit">
+
+        <div class="benefit-icon">♡</div>
+
+        <div>
+            <h3>Dành cho bạn</h3>
+            <p>Phù hợp nhiều phong cách cá nhân</p>
+        </div>
+
+    </div>
+
+
+    <div class="benefit">
+
+        <div class="benefit-icon">✧</div>
+
+        <div>
+            <h3>Tinh tế</h3>
+            <p>Thiết kế hiện đại và thanh lịch</p>
+        </div>
+
+    </div>
+
+
+    <div class="benefit">
+
+        <div class="benefit-icon">✓</div>
+
+        <div>
+            <h3>Giao hàng</h3>
+            <p>Đóng gói cẩn thận toàn quốc</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section id="products" class="products-section">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            AURALIA COLLECTION
+        </p>
+
+        <h2>
+            Sản phẩm nổi bật
+        </h2>
+
+        <p>
+            Những sản phẩm được yêu thích tại AURALIA
+        </p>
+
+    </div>
+
+
+    <!-- CATEGORY -->
+
+    <div class="categories">
+
+        <button class="category active" onclick="filterProducts('all', this)">
+            Tất cả
+        </button>
+
+        <button class="category" onclick="filterProducts('makeup', this)">
+            Trang điểm
+        </button>
+
+        <button class="category" onclick="filterProducts('skincare', this)">
+            Chăm sóc da
+        </button>
+
+        <button class="category" onclick="filterProducts('lips', this)">
+            Son môi
+        </button>
+
+    </div>
+
+
+    <!-- PRODUCT GRID -->
+
+    <div id="productGrid" class="product-grid">
+
+        <!-- JavaScript sẽ tạo sản phẩm -->
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="about-section">
+
+    <div class="about-container">
+
+        <div class="about-image">
+
+            <div class="about-card">
+
+                <span>AURALIA</span>
+
+                <strong>BE YOUR<br>OWN BEAUTY</strong>
+
+                <small>COSMETICS</small>
+
+            </div>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p class="section-label">
+                ABOUT AURALIA
+            </p>
+
+            <h2>
+                Vẻ đẹp bắt đầu
+                <br>
+                từ chính bạn.
+            </h2>
+
+            <p>
+
+                AURALIA hướng tới trở thành thương hiệu
+                mỹ phẩm được giới trẻ Việt Nam yêu thích,
+                cung cấp sản phẩm chất lượng, phù hợp nhu cầu
+                và phong cách cá nhân.
+
+            </p>
+
+            <p>
+
+                Chúng tôi tin rằng mỗi người đều có một vẻ đẹp
+                riêng. AURALIA không cố thay đổi bạn,
+                mà đồng hành cùng bạn để vẻ đẹp ấy được
+                tỏa sáng.
+
+            </p>
+
+            <a href="#products" class="outline-button">
+                KHÁM PHÁ AURALIA
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROMOTION ================= -->
+
+<section class="promotion">
+
+    <div class="promotion-container">
+
+        <div>
+
+            <p class="section-label">
+                AURALIA SPECIAL
+            </p>
+
+            <h2>
+                Ưu đãi dành riêng
+                <br>
+                cho bạn.
+            </h2>
+
+            <p>
+                Giảm 15% cho đơn hàng đầu tiên.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <button class="primary-button" onclick="scrollToProducts()">
+                MUA NGAY →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section id="contact" class="newsletter-section">
+
+    <div class="newsletter-container">
+
+        <p class="section-label">
+            STAY BEAUTIFUL
+        </p>
+
+        <h2>
+            Đừng bỏ lỡ những điều
+            <br>
+            tuyệt vời từ AURALIA.
+        </h2>
+
+        <p>
+            Đăng ký email để nhận thông tin sản phẩm
+            và ưu đãi mới nhất.
+        </p>
+
+
+        <form class="newsletter-form" onsubmit="subscribe(event)">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Nhập email của bạn..."
+                required
+            >
+
+            <button type="submit">
+                ĐĂNG KÝ
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+                AURALIA
+                <span>COSMETICS</span>
+            </div>
+
+            <p>
+                Beauty made personal.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Khám phá</h3>
+
+            <a href="#home">Trang chủ</a>
+            <a href="#products">Sản phẩm</a>
+            <a href="#about">Về Auralia</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Hỗ trợ</h3>
+
+            <a href="#">Chính sách giao hàng</a>
+            <a href="#">Đổi trả</a>
+            <a href="#">Chính sách bảo mật</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Liên hệ</h3>
+
+            <p>📞 0123 456 789</p>
+            <p>✉ hello@auralia.vn</p>
+            <p>📍 Hà Nội, Việt Nam</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 AURALIA COSMETICS.
+        All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= CART OVERLAY ================= -->
+
+<div id="cartOverlay"
+     class="cart-overlay"
+     onclick="closeCart()">
+</div>
+
+
+<!-- ================= CART DRAWER ================= -->
+
+<div id="cartDrawer" class="cart-drawer">
+
+    <div class="cart-header">
+
+        <h2>
+            Giỏ hàng
+        </h2>
+
+        <button onclick="closeCart()">
+            ×
+        </button>
+
+    </div>
+
+
+    <div id="cartItems" class="cart-items">
+
+        <div class="empty-cart">
+
+            <div>🛍</div>
+
+            <p>
+                Giỏ hàng của bạn đang trống.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            <span>Tạm tính</span>
+
+            <strong id="cartTotal">
+                0₫
+            </strong>
+
+        </div>
+
+
+        <button
+            class="checkout-button"
+            onclick="openCheckout()">
+
+            TIẾN HÀNH ĐẶT HÀNG
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= CHECKOUT MODAL ================= -->
+
+<div id="checkoutModal" class="modal">
+
+    <div class="modal-box">
+
+        <button class="modal-close" onclick="closeCheckout()">
+            ×
+        </button>
+
+        <h2>
+            Thông tin đặt hàng
+        </h2>
+
+        <p>
+            Vui lòng nhập thông tin để hoàn tất đơn hàng.
+        </p>
+
+
+        <form onsubmit="submitOrder(event)">
+
+            <label>
+                Họ và tên
+            </label>
+
+            <input
+                id="customerName"
+                type="text"
+                placeholder="Nguyễn Văn A"
+                required
+            >
+
+
+            <label>
+                Số điện thoại
+            </label>
+
+            <input
+                id="customerPhone"
+                type="tel"
+                placeholder="0123 456 789"
+                required
+            >
+
+
+            <label>
+                Địa chỉ nhận hàng
+            </label>
+
+            <textarea
+                id="customerAddress"
+                placeholder="Số nhà, đường, quận/huyện..."
+                required
+            ></textarea>
+
+
+            <label>
+                Ghi chú
+            </label>
+
+            <textarea
+                id="customerNote"
+                placeholder="Ghi chú cho shop..."
+            ></textarea>
+
+
+            <button class="checkout-button" type="submit">
+
+                XÁC NHẬN ĐẶT HÀNG
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= SUCCESS MODAL ================= -->
+
+<div id="successModal" class="modal">
+
+    <div class="success-box">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Đặt hàng thành công!
+        </h2>
+
+        <p>
+            Cảm ơn bạn đã lựa chọn AURALIA COSMETICS.
+        </p>
+
+        <button
+            class="primary-button"
+            onclick="closeSuccess()">
+
+            HOÀN TẤT
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

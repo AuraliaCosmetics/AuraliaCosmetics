@@ -1,0 +1,966 @@
+/* =====================================================
+   AURALIA COSMETICS
+   JAVASCRIPT
+===================================================== */
+
+
+/* ================= PRODUCT DATA ================= */
+
+const products = [
+
+    {
+        id: 1,
+
+        name: "Glow Beauty Serum",
+
+        category: "skincare",
+
+        categoryName: "CHĂM SÓC DA",
+
+        price: 289000,
+
+        description:
+            "Serum dưỡng sáng và cấp ẩm cho làn da.",
+
+        image:
+            "images/product-01.jpg"
+    },
+
+
+    {
+        id: 2,
+
+        name: "Velvet Lip Cream",
+
+        category: "lips",
+
+        categoryName: "SON MÔI",
+
+        price: 199000,
+
+        description:
+            "Son kem lì mềm mịn với màu sắc trẻ trung.",
+
+        image:
+            "images/product-02.jpg"
+    },
+
+
+    {
+        id: 3,
+
+        name: "Soft Blush",
+
+        category: "makeup",
+
+        categoryName: "TRANG ĐIỂM",
+
+        price: 229000,
+
+        description:
+            "Má hồng mịn nhẹ tạo hiệu ứng tự nhiên.",
+
+        image:
+            "images/product-03.jpg"
+    },
+
+
+    {
+        id: 4,
+
+        name: "Daily Moisture Cream",
+
+        category: "skincare",
+
+        categoryName: "CHĂM SÓC DA",
+
+        price: 259000,
+
+        description:
+            "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
+
+        image:
+            "images/product-04.jpg"
+    },
+
+
+    {
+        id: 5,
+
+        name: "Nude Lip Gloss",
+
+        category: "lips",
+
+        categoryName: "SON MÔI",
+
+        price: 179000,
+
+        description:
+            "Son bóng trong trẻo cho đôi môi căng mọng.",
+
+        image:
+            "images/product-02.jpg"
+    },
+
+
+    {
+        id: 6,
+
+        name: "Pure Skin Toner",
+
+        category: "skincare",
+
+        categoryName: "CHĂM SÓC DA",
+
+        price: 219000,
+
+        description:
+            "Toner cân bằng và làm dịu làn da.",
+
+        image:
+            "images/product-01.jpg"
+    },
+
+
+    {
+        id: 7,
+
+        name: "Silky Foundation",
+
+        category: "makeup",
+
+        categoryName: "TRANG ĐIỂM",
+
+        price: 329000,
+
+        description:
+            "Kem nền mỏng nhẹ với độ che phủ tự nhiên.",
+
+        image:
+            "images/product-03.jpg"
+    },
+
+
+    {
+        id: 8,
+
+        name: "Rose Blush",
+
+        category: "makeup",
+
+        categoryName: "TRANG ĐIỂM",
+
+        price: 239000,
+
+        description:
+            "Phấn má sắc hồng nhẹ nhàng và nữ tính.",
+
+        image:
+            "images/product-03.jpg"
+    }
+
+];
+
+
+/* ================= CART ================= */
+
+let cart = [];
+
+
+/* ================= FORMAT PRICE ================= */
+
+function formatPrice(price) {
+
+    return price.toLocaleString("vi-VN") + "₫";
+
+}
+
+
+/* ================= LOAD CART ================= */
+
+function loadCart() {
+
+    const savedCart =
+        localStorage.getItem("auraliaCart");
+
+    if (savedCart) {
+
+        cart = JSON.parse(savedCart);
+
+    }
+
+}
+
+
+/* ================= SAVE CART ================= */
+
+function saveCart() {
+
+    localStorage.setItem(
+        "auraliaCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+/* ================= RENDER PRODUCTS ================= */
+
+function renderProducts(list = products) {
+
+    const grid =
+        document.getElementById("productGrid");
+
+
+    grid.innerHTML = "";
+
+
+    if (list.length === 0) {
+
+        grid.innerHTML = `
+            <p style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:50px;
+            ">
+                Không tìm thấy sản phẩm.
+            </p>
+        `;
+
+        return;
+
+    }
+
+
+    list.forEach(product => {
+
+        const card =
+            document.createElement("article");
+
+
+        card.className =
+            "product-card";
+
+
+        card.innerHTML = `
+
+            <div class="product-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+
+                <div
+                    class="product-placeholder"
+                    style="display:none;"
+                >
+                    A
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    ${product.categoryName}
+                </div>
+
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
+
+                <p class="product-description">
+                    ${product.description}
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ${formatPrice(product.price)}
+                    </div>
+
+
+                    <button
+                        class="add-button"
+                        onclick="addToCart(${product.id})"
+                        title="Thêm vào giỏ hàng"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* ================= FILTER ================= */
+
+function filterProducts(category, button) {
+
+    document
+        .querySelectorAll(".category")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    if (category === "all") {
+
+        renderProducts(products);
+
+        return;
+
+    }
+
+
+    const filtered =
+        products.filter(
+            product =>
+                product.category === category
+        );
+
+
+    renderProducts(filtered);
+
+}
+
+
+/* ================= ADD CART ================= */
+
+function addToCart(productId) {
+
+    const product =
+        products.find(
+            item => item.id === productId
+        );
+
+
+    if (!product) return;
+
+
+    const existing =
+        cart.find(
+            item => item.id === productId
+        );
+
+
+    if (existing) {
+
+        existing.quantity++;
+
+    }
+
+    else {
+
+        cart.push({
+
+            id: product.id,
+
+            name: product.name,
+
+            price: product.price,
+
+            quantity: 1
+
+        });
+
+    }
+
+
+    saveCart();
+
+    updateCart();
+
+    showToast(
+        `${product.name} đã được thêm vào giỏ hàng.`
+    );
+
+}
+
+
+/* ================= UPDATE CART ================= */
+
+function updateCart() {
+
+    const cartCount =
+        document.getElementById("cartCount");
+
+
+    const totalQuantity =
+        cart.reduce(
+            (total, item) =>
+                total + item.quantity,
+            0
+        );
+
+
+    cartCount.textContent =
+        totalQuantity;
+
+
+    renderCartItems();
+
+}
+
+
+/* ================= RENDER CART ================= */
+
+function renderCartItems() {
+
+    const container =
+        document.getElementById("cartItems");
+
+
+    const totalElement =
+        document.getElementById("cartTotal");
+
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-cart">
+
+                <div>🛍</div>
+
+                <p>
+                    Giỏ hàng của bạn đang trống.
+                </p>
+
+            </div>
+
+        `;
+
+
+        totalElement.textContent =
+            "0₫";
+
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    let total = 0;
+
+
+    cart.forEach(item => {
+
+        total +=
+            item.price *
+            item.quantity;
+
+
+        const element =
+            document.createElement("div");
+
+
+        element.className =
+            "cart-item";
+
+
+        element.innerHTML = `
+
+            <div class="cart-item-top">
+
+                <div class="cart-item-name">
+                    ${item.name}
+                </div>
+
+                <div class="cart-item-price">
+                    ${formatPrice(item.price)}
+                </div>
+
+            </div>
+
+
+            <div class="cart-item-bottom">
+
+                <div class="quantity">
+
+                    <button
+                        onclick="changeQuantity(
+                            ${item.id},
+                            -1
+                        )"
+                    >
+                        −
+                    </button>
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+                    <button
+                        onclick="changeQuantity(
+                            ${item.id},
+                            1
+                        )"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="remove-item"
+                    onclick="removeFromCart(${item.id})"
+                >
+                    Xóa
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(element);
+
+    });
+
+
+    totalElement.textContent =
+        formatPrice(total);
+
+}
+
+
+/* ================= CHANGE QUANTITY ================= */
+
+function changeQuantity(productId, amount) {
+
+    const item =
+        cart.find(
+            item => item.id === productId
+        );
+
+
+    if (!item) return;
+
+
+    item.quantity += amount;
+
+
+    if (item.quantity <= 0) {
+
+        cart =
+            cart.filter(
+                item => item.id !== productId
+            );
+
+    }
+
+
+    saveCart();
+
+    updateCart();
+
+}
+
+
+/* ================= REMOVE ================= */
+
+function removeFromCart(productId) {
+
+    cart =
+        cart.filter(
+            item => item.id !== productId
+        );
+
+
+    saveCart();
+
+    updateCart();
+
+}
+
+
+/* ================= OPEN CART ================= */
+
+function openCart() {
+
+    document
+        .getElementById("cartDrawer")
+        .classList.add("active");
+
+
+    document
+        .getElementById("cartOverlay")
+        .classList.add("active");
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* ================= CLOSE CART ================= */
+
+function closeCart() {
+
+    document
+        .getElementById("cartDrawer")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("active");
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+function openCheckout() {
+
+    if (cart.length === 0) {
+
+        showToast(
+            "Vui lòng thêm sản phẩm trước khi đặt hàng."
+        );
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("checkoutModal")
+        .classList.add("active");
+
+}
+
+
+/* ================= CLOSE CHECKOUT ================= */
+
+function closeCheckout() {
+
+    document
+        .getElementById("checkoutModal")
+        .classList.remove("active");
+
+}
+
+
+/* ================= SUBMIT ORDER ================= */
+
+function submitOrder(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document
+            .getElementById("customerName")
+            .value;
+
+
+    const phone =
+        document
+            .getElementById("customerPhone")
+            .value;
+
+
+    const address =
+        document
+            .getElementById("customerAddress")
+            .value;
+
+
+    const note =
+        document
+            .getElementById("customerNote")
+            .value;
+
+
+    const order = {
+
+        customer: {
+
+            name: name,
+
+            phone: phone,
+
+            address: address,
+
+            note: note
+
+        },
+
+
+        products: cart,
+
+
+        total:
+            cart.reduce(
+                (total, item) =>
+                    total +
+                    item.price *
+                    item.quantity,
+                0
+            ),
+
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    console.log(
+        "AURALIA ORDER:",
+        order
+    );
+
+
+    /*
+        DEMO:
+
+        Hiện tại đơn hàng chỉ được lưu
+        trong trình duyệt.
+
+        Khi triển khai thật, có thể kết nối
+        API / Google Sheets / Firebase /
+        Supabase / backend riêng.
+    */
+
+
+    localStorage.setItem(
+        "lastAuraliaOrder",
+        JSON.stringify(order)
+    );
+
+
+    cart = [];
+
+
+    saveCart();
+
+    updateCart();
+
+    closeCheckout();
+
+    closeCart();
+
+
+    document
+        .getElementById("successModal")
+        .classList.add("active");
+
+
+    document
+        .querySelector("#checkoutModal form")
+        .reset();
+
+}
+
+
+/* ================= SUCCESS ================= */
+
+function closeSuccess() {
+
+    document
+        .getElementById("successModal")
+        .classList.remove("active");
+
+}
+
+
+/* ================= NEWSLETTER ================= */
+
+function subscribe(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document
+            .getElementById("email")
+            .value;
+
+
+    if (!email) return;
+
+
+    localStorage.setItem(
+        "auraliaSubscriber",
+        email
+    );
+
+
+    document.getElementById("email").value =
+        "";
+
+
+    showToast(
+        "Cảm ơn bạn đã đăng ký cùng AURALIA!"
+    );
+
+}
+
+
+/* ================= MOBILE MENU ================= */
+
+function toggleMobileMenu() {
+
+    document
+        .getElementById("mobileMenu")
+        .classList.toggle("active");
+
+}
+
+
+function closeMobileMenu() {
+
+    document
+        .getElementById("mobileMenu")
+        .classList.remove("active");
+
+}
+
+
+/* ================= SCROLL PRODUCTS ================= */
+
+function scrollToProducts() {
+
+    document
+        .getElementById("products")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* ================= TOAST ================= */
+
+function showToast(message) {
+
+    let toast =
+        document.getElementById("toast");
+
+
+    if (!toast) {
+
+        toast =
+            document.createElement("div");
+
+
+        toast.id = "toast";
+
+
+        toast.style.position =
+            "fixed";
+
+
+        toast.style.bottom =
+            "30px";
+
+
+        toast.style.left =
+            "50%";
+
+
+        toast.style.transform =
+            "translateX(-50%)";
+
+
+        toast.style.background =
+            "#241b1e";
+
+
+        toast.style.color =
+            "#fff";
+
+
+        toast.style.padding =
+            "14px 22px";
+
+
+        toast.style.borderRadius =
+            "30px";
+
+
+        toast.style.zIndex =
+            "999";
+
+
+        toast.style.fontSize =
+            "13px";
+
+
+        toast.style.boxShadow =
+            "0 10px 30px rgba(0,0,0,.2)";
+
+
+        document.body.appendChild(toast);
+
+    }
+
+
+    toast.textContent =
+        message;
+
+
+    toast.style.opacity =
+        "1";
+
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+
+    window.toastTimer =
+        setTimeout(() => {
+
+            toast.style.opacity =
+                "0";
+
+        }, 2500);
+
+}
+
+
+/* ================= INIT ================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadCart();
+
+        renderProducts();
+
+        updateCart();
+
+    }
+);
