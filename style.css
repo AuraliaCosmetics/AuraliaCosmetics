@@ -225,6 +225,8 @@ textarea {
     display: block;
 
     color: var(--pink-dark);
+    front-size: 24px;
+    front-weight: normal;
 }
 
 
