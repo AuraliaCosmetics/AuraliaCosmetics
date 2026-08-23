@@ -1,748 +1,1518 @@
-/* =====================================================
-   AURALIA COSMETICS
-   SHOPPING CART
-===================================================== */
+:root {
+    --black: #21191b;
+    --dark: #332326;
+
+    --pink: #e4a5b5;
+    --pink-dark: #b96f82;
+    --pink-light: #fff1f4;
+
+    --cream: #fff9f7;
+    --white: #ffffff;
+
+    --gray: #766b6d;
+
+    --border: #eadde0;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: "DM Sans", sans-serif;
+    color: var(--black);
+    background: white;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(255,255,255,.95);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.header-inner {
+    max-width: 1200px;
+
+    height: 78px;
+
+    margin: auto;
+
+    padding: 0 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+    font-family: "Playfair Display", serif;
+
+    font-size: 23px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.nav {
+    display: flex;
+    gap: 35px;
+}
+
+
+.nav a {
+    font-size: 14px;
+
+    transition: .3s;
+}
+
+
+.nav a:hover {
+    color: var(--pink-dark);
+}
+
+
+.cart-btn {
+    border: none;
+
+    background: var(--black);
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+}
+
+
+.cart-btn span {
+    background: var(--pink);
+
+    color: var(--black);
+
+    border-radius: 50%;
+
+    padding: 2px 7px;
+
+    margin-left: 5px;
+}
+
+
+.menu-btn {
+    display: none;
+
+    border: none;
+
+    background: none;
+
+    font-size: 25px;
+}
+
+
+.mobile-menu {
+    display: none;
+
+    flex-direction: column;
+
+    background: white;
+}
+
+
+.mobile-menu.active {
+    display: flex;
+}
+
+
+.mobile-menu a {
+    padding: 15px 25px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    background:
+        linear-gradient(
+            120deg,
+            #fff8f9,
+            #f3d9df
+        );
+}
+
+
+.hero-inner {
+    max-width: 1200px;
+
+    min-height: 650px;
+
+    margin: auto;
+
+    padding: 70px 25px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+
+.eyebrow {
+    color: var(--pink-dark);
+
+    letter-spacing: 4px;
+
+    font-size: 11px;
+
+    margin-bottom: 20px;
+}
+
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(50px, 7vw, 82px);
+
+    line-height: 1;
+
+    font-weight: 600;
+}
+
+
+.hero h1 span {
+    display: block;
+
+    color: var(--pink-dark);
+}
+
+
+.hero-content > p {
+    max-width: 530px;
+
+    color: var(--gray);
+
+    margin-top: 25px;
+
+    line-height: 1.8;
+}
+
+
+.main-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-top: 30px;
+
+    background: var(--black);
+
+    color: white;
+
+    padding: 15px 25px;
+
+    border-radius: 30px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+}
+
+
+.main-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+/* HERO VISUAL */
+
+.hero-visual {
+    height: 500px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.hero-bg-circle {
+    position: absolute;
+
+    width: 410px;
+    height: 410px;
+
+    border-radius: 50%;
+
+    background: var(--pink);
+
+    opacity: .65;
+}
+
+
+.cosmetic-bottle {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.cap {
+    width: 75px;
+
+    height: 55px;
+
+    margin: auto;
+
+    border-radius: 8px 8px 2px 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #252022,
+            #6a5c60,
+            #211a1c
+        );
+}
+
+
+.bottle {
+    width: 150px;
+
+    height: 290px;
+
+    border-radius: 25px 25px 35px 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #edd2d9,
+            #fff
+        );
+
+    box-shadow:
+        20px 30px 40px rgba(0,0,0,.18);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.bottle-text {
+    text-align: center;
+}
+
+
+.bottle-text small {
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.bottle-text strong {
+    display: block;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 27px;
+
+    margin: 7px 0;
+}
+
+
+.bottle-text span {
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+
+.hero-word {
+    position: absolute;
+
+    right: 10px;
+
+    bottom: 80px;
+
+    color: white;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+
+    letter-spacing: 5px;
+}
+
+
+/* ================= FEATURES ================= */
+
+.features {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 30px 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 25px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.feature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.feature-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: var(--pink-light);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--pink-dark);
+}
+
+
+.feature strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+
+.feature p {
+    color: var(--gray);
+
+    font-size: 11px;
+}
 
 
 /* ================= PRODUCTS ================= */
 
-const products = [
+.products-section {
+    max-width: 1200px;
 
-    {
-        id: 1,
-        name: "Glow Beauty Serum",
-        category: "skincare",
-        categoryName: "CHĂM SÓC DA",
-        price: 289000,
-        description: "Serum dưỡng sáng và cấp ẩm cho làn da.",
-        image: "images/product-01.jpg"
-    },
+    margin: auto;
 
-    {
-        id: 2,
-        name: "Velvet Lip Cream",
-        category: "lips",
-        categoryName: "SON MÔI",
-        price: 199000,
-        description: "Son kem lì mềm mịn với màu sắc trẻ trung.",
-        image: "images/product-02.jpg"
-    },
-
-    {
-        id: 3,
-        name: "Soft Blush",
-        category: "makeup",
-        categoryName: "TRANG ĐIỂM",
-        price: 229000,
-        description: "Má hồng mịn nhẹ tạo hiệu ứng tự nhiên.",
-        image: "images/product-03.jpg"
-    },
-
-    {
-        id: 4,
-        name: "Daily Moisture Cream",
-        category: "skincare",
-        categoryName: "CHĂM SÓC DA",
-        price: 259000,
-        description: "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
-        image: "images/product-04.jpg"
-    },
-
-    {
-        id: 5,
-        name: "Nude Lip Gloss",
-        category: "lips",
-        categoryName: "SON MÔI",
-        price: 179000,
-        description: "Son bóng trong trẻo cho đôi môi căng mọng.",
-        image: "images/product-02.jpg"
-    },
-
-    {
-        id: 6,
-        name: "Pure Skin Toner",
-        category: "skincare",
-        categoryName: "CHĂM SÓC DA",
-        price: 219000,
-        description: "Toner cân bằng và làm dịu làn da.",
-        image: "images/product-01.jpg"
-    },
-
-    {
-        id: 7,
-        name: "Silky Foundation",
-        category: "makeup",
-        categoryName: "TRANG ĐIỂM",
-        price: 329000,
-        description: "Kem nền mỏng nhẹ với độ che phủ tự nhiên.",
-        image: "images/product-03.jpg"
-    },
-
-    {
-        id: 8,
-        name: "Rose Blush",
-        category: "makeup",
-        categoryName: "TRANG ĐIỂM",
-        price: 239000,
-        description: "Phấn má sắc hồng nhẹ nhàng và nữ tính.",
-        image: "images/product-03.jpg"
-    }
-
-];
-
-
-/* ================= CART ================= */
-
-let cart = [];
-
-
-/* ================= PRICE ================= */
-
-function money(number) {
-
-    return number.toLocaleString("vi-VN") + "₫";
-
+    padding: 100px 25px;
 }
 
 
-/* ================= LOAD ================= */
-
-function loadCart() {
-
-    const saved =
-        localStorage.getItem("AuraliaCosmeticsCart");
-
-    if (saved) {
-
-        cart = JSON.parse(saved);
-
-    }
-
+.section-title {
+    text-align: center;
 }
 
 
-/* ================= SAVE ================= */
+.section-title > span,
+.section-label {
+    color: var(--pink-dark);
 
-function saveCart() {
+    font-size: 10px;
 
-    localStorage.setItem(
-        "AuraliaCosmeticsCart",
-        JSON.stringify(cart)
-    );
-
+    letter-spacing: 4px;
 }
 
 
-/* ================= PRODUCTS ================= */
+.section-title h2 {
+    font-family: "Playfair Display", serif;
 
-function renderProducts(list = products) {
+    font-size: 42px;
 
-    const grid =
-        document.getElementById("productGrid");
-
-
-    grid.innerHTML = "";
-
-
-    list.forEach(product => {
-
-        const card =
-            document.createElement("div");
-
-
-        card.className =
-            "product-card";
-
-
-        card.innerHTML = `
-
-            <div class="product-image">
-
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    onerror="
-                        this.style.display='none';
-                        this.nextElementSibling.style.display='flex';
-                    "
-                >
-
-                <div
-                    class="product-placeholder"
-                    style="display:none;"
-                >
-                    A
-                </div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="product-category">
-
-                    ${product.categoryName}
-
-                </div>
-
-
-                <h3 class="product-name">
-
-                    ${product.name}
-
-                </h3>
-
-
-                <p class="product-description">
-
-                    ${product.description}
-
-                </p>
-
-
-                <div class="product-bottom">
-
-                    <strong class="product-price">
-
-                        ${money(product.price)}
-
-                    </strong>
-
-
-                    <button
-                        class="add-btn"
-                        onclick="addToCart(${product.id})"
-                    >
-
-                        +
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        `;
-
-
-        grid.appendChild(card);
-
-    });
-
+    margin: 10px 0;
 }
 
 
-/* ================= FILTER ================= */
-
-function filterProducts(category, button) {
-
-    document
-        .querySelectorAll(".filter")
-        .forEach(item => {
-
-            item.classList.remove("active");
-
-        });
+.section-title p {
+    color: var(--gray);
+}
 
 
-    button.classList.add("active");
+/* FILTER */
+
+.filters {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 40px 0;
+
+    flex-wrap: wrap;
+}
 
 
-    if (category === "all") {
+.filter {
+    border: 1px solid var(--border);
 
-        renderProducts();
+    background: white;
 
-        return;
+    padding: 10px 20px;
 
-    }
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
 
 
-    const filtered =
-        products.filter(
-            product =>
-                product.category === category
+.filter.active,
+.filter:hover {
+    background: var(--black);
+
+    color: white;
+}
+
+
+/* GRID */
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 22px;
+}
+
+
+.product-card {
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition: .3s;
+}
+
+
+.product-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.1);
+}
+
+
+.product-image {
+    height: 280px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff0f3,
+            #f0cbd3
         );
 
+    display: flex;
 
-    renderProducts(filtered);
+    align-items: center;
 
+    justify-content: center;
+
+    overflow: hidden;
 }
 
 
-/* ================= ADD ================= */
+.product-image img {
+    width: 100%;
+    height: 100%;
 
-function addToCart(id) {
+    object-fit: cover;
+}
 
-    const product =
-        products.find(
-            product => product.id === id
+
+.product-placeholder {
+    width: 90px;
+    height: 175px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #e6c7ce,
+            #fff
         );
 
+    display: flex;
 
-    if (!product) return;
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 20px 30px rgba(0,0,0,.15);
+}
 
 
-    const existing =
-        cart.find(
-            item => item.id === id
+.product-info {
+    padding: 20px;
+}
+
+
+.product-category {
+    color: var(--pink-dark);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+.product-name {
+    font-size: 16px;
+
+    margin-top: 6px;
+}
+
+
+.product-description {
+    font-size: 12px;
+
+    color: var(--gray);
+
+    margin-top: 5px;
+}
+
+
+.product-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 15px;
+}
+
+
+.product-price {
+    font-weight: 700;
+}
+
+
+.add-btn {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--black);
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+/* ================= ABOUT ================= */
+
+.about {
+    background: var(--cream);
+
+    padding: 100px 25px;
+}
+
+
+.about-inner {
+    max-width: 1050px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+
+.about-image {
+    height: 480px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e6abb8,
+            #f6dbe1
         );
 
+    display: flex;
 
-    if (existing) {
+    align-items: center;
 
-        existing.quantity++;
-
-    } else {
-
-        cart.push({
-
-            id: product.id,
-
-            name: product.name,
-
-            price: product.price,
-
-            quantity: 1
-
-        });
-
-    }
-
-
-    saveCart();
-
-    updateCart();
-
-    openCart();
-
+    justify-content: center;
 }
 
 
-/* ================= UPDATE ================= */
+.about-card {
+    width: 245px;
+    height: 315px;
 
-function updateCart() {
+    background:
+        rgba(255,255,255,.9);
 
-    const count =
-        cart.reduce(
-            (sum, item) =>
-                sum + item.quantity,
-            0
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 50px rgba(0,0,0,.12);
+}
+
+
+.about-card span {
+    letter-spacing: 4px;
+}
+
+
+.about-card strong {
+    font-family: "Playfair Display", serif;
+
+    font-size: 27px;
+
+    line-height: 1.2;
+
+    margin: 25px 0;
+}
+
+
+.about-card small {
+    letter-spacing: 3px;
+}
+
+
+.about-text h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 46px;
+
+    line-height: 1.1;
+
+    margin: 15px 0 25px;
+}
+
+
+.about-text p {
+    color: var(--gray);
+
+    margin-bottom: 15px;
+}
+
+
+/* ================= PROMOTION ================= */
+
+.promotion {
+    padding: 70px 25px;
+}
+
+
+.promotion-inner {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 65px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #dfabb8,
+            #f2d6dc
         );
 
+    display: flex;
 
-    document
-        .getElementById("cartCount")
-        .textContent = count;
+    align-items: center;
 
-
-    renderCart();
-
+    justify-content: space-between;
 }
 
 
-/* ================= RENDER CART ================= */
+.promotion-inner > div > span {
+    font-size: 10px;
 
-function renderCart() {
-
-    const container =
-        document.getElementById("cartItems");
-
-
-    const totalElement =
-        document.getElementById("cartTotal");
-
-
-    if (cart.length === 0) {
-
-        container.innerHTML = `
-
-            <div class="empty">
-
-                <div>
-
-                    🛍
-
-                    <br><br>
-
-                    Giỏ hàng đang trống.
-
-                </div>
-
-            </div>
-
-        `;
-
-
-        totalElement.textContent =
-            "0₫";
-
-
-        return;
-
-    }
-
-
-    let total = 0;
-
-
-    container.innerHTML = "";
-
-
-    cart.forEach(item => {
-
-        total +=
-            item.price *
-            item.quantity;
-
-
-        const div =
-            document.createElement("div");
-
-
-        div.className =
-            "cart-item";
-
-
-        div.innerHTML = `
-
-            <div class="cart-item-top">
-
-                <div class="cart-item-name">
-
-                    ${item.name}
-
-                </div>
-
-                <div class="cart-item-price">
-
-                    ${money(item.price)}
-
-                </div>
-
-            </div>
-
-
-            <div class="cart-item-bottom">
-
-                <div class="quantity">
-
-                    <button
-                        onclick="changeQuantity(
-                            ${item.id},
-                            -1
-                        )"
-                    >
-                        −
-                    </button>
-
-
-                    <span>
-
-                        ${item.quantity}
-
-                    </span>
-
-
-                    <button
-                        onclick="changeQuantity(
-                            ${item.id},
-                            1
-                        )"
-                    >
-                        +
-                    </button>
-
-                </div>
-
-
-                <button
-                    class="remove"
-                    onclick="removeItem(${item.id})"
-                >
-
-                    Xóa
-
-                </button>
-
-            </div>
-
-        `;
-
-
-        container.appendChild(div);
-
-    });
-
-
-    totalElement.textContent =
-        money(total);
-
+    letter-spacing: 4px;
 }
 
 
-/* ================= QUANTITY ================= */
+.promotion h2 {
+    font-family: "Playfair Display", serif;
 
-function changeQuantity(id, amount) {
+    font-size: 38px;
 
-    const item =
-        cart.find(
-            item => item.id === id
-        );
+    line-height: 1.15;
 
-
-    if (!item) return;
-
-
-    item.quantity += amount;
-
-
-    if (item.quantity <= 0) {
-
-        cart =
-            cart.filter(
-                item => item.id !== id
-            );
-
-    }
-
-
-    saveCart();
-
-    updateCart();
-
+    margin: 12px 0;
 }
 
 
-/* ================= REMOVE ================= */
-
-function removeItem(id) {
-
-    cart =
-        cart.filter(
-            item => item.id !== id
-        );
-
-
-    saveCart();
-
-    updateCart();
-
+.promotion p {
+    color: var(--gray);
 }
 
 
-/* ================= OPEN CART ================= */
+.white-btn {
+    background: white;
 
-function openCart() {
+    padding: 14px 25px;
 
-    document
-        .getElementById("cart")
-        .classList.add("active");
+    border-radius: 30px;
 
+    font-size: 11px;
 
-    document
-        .getElementById("overlay")
-        .classList.add("active");
-
-}
-
-
-/* ================= CLOSE CART ================= */
-
-function closeCart() {
-
-    document
-        .getElementById("cart")
-        .classList.remove("active");
-
-
-    document
-        .getElementById("overlay")
-        .classList.remove("active");
-
-}
-
-
-/* ================= CHECKOUT ================= */
-
-function checkout() {
-
-    if (cart.length === 0) {
-
-        alert(
-            "Giỏ hàng của bạn đang trống."
-        );
-
-        return;
-
-    }
-
-
-    document
-        .getElementById("checkoutModal")
-        .classList.add("active");
-
-}
-
-
-/* ================= CLOSE CHECKOUT ================= */
-
-function closeCheckout() {
-
-    document
-        .getElementById("checkoutModal")
-        .classList.remove("active");
-
-}
-
-
-/* ================= ORDER ================= */
-
-function submitOrder(event) {
-
-    event.preventDefault();
-
-
-    const order = {
-
-        name:
-            document.getElementById("name").value,
-
-        phone:
-            document.getElementById("phone").value,
-
-        address:
-            document.getElementById("address").value,
-
-        note:
-            document.getElementById("note").value,
-
-        products:
-            [...cart],
-
-        total:
-            cart.reduce(
-                (sum, item) =>
-                    sum +
-                    item.price *
-                    item.quantity,
-                0
-            ),
-
-        time:
-            new Date().toLocaleString("vi-VN")
-
-    };
-
-
-    /*
-       LƯU ĐƠN HÀNG DEMO
-    */
-
-    localStorage.setItem(
-        "AuraliaCosmeticsLastOrder",
-        JSON.stringify(order)
-    );
-
-
-    console.log(
-        "AuraliaCosmetics Order:",
-        order
-    );
-
-
-    cart = [];
-
-
-    saveCart();
-
-    updateCart();
-
-    closeCheckout();
-
-    closeCart();
-
-
-    document
-        .getElementById("success")
-        .classList.add("active");
-
-
-    event.target.reset();
-
-}
-
-
-/* ================= SUCCESS ================= */
-
-function closeSuccess() {
-
-    document
-        .getElementById("success")
-        .classList.remove("active");
-
+    letter-spacing: 1px;
 }
 
 
 /* ================= NEWSLETTER ================= */
 
-function subscribe(event) {
+.newsletter {
+    background: var(--black);
 
-    event.preventDefault();
+    color: white;
 
-
-    const email =
-        document
-            .getElementById("email")
-            .value;
-
-
-    localStorage.setItem(
-        "AuraliaCosmeticsEmail",
-        email
-    );
-
-
-    alert(
-        "Cảm ơn bạn đã đăng ký cùng AuraliaCosmetics!"
-    );
-
-
-    event.target.reset();
-
+    padding: 100px 25px;
 }
 
 
-/* ================= MOBILE MENU ================= */
+.newsletter-inner {
+    max-width: 750px;
 
-function toggleMenu() {
+    margin: auto;
 
-    document
-        .getElementById("mobileMenu")
-        .classList.toggle("active");
-
+    text-align: center;
 }
 
 
-function closeMenu() {
+.newsletter-inner > span {
+    color: var(--pink);
 
-    document
-        .getElementById("mobileMenu")
-        .classList.remove("active");
+    font-size: 10px;
 
+    letter-spacing: 4px;
 }
 
 
-/* ================= START ================= */
+.newsletter h2 {
+    font-family: "Playfair Display", serif;
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
+    font-size: 42px;
 
-        loadCart();
+    line-height: 1.2;
 
-        renderProducts();
+    margin: 15px 0;
+}
 
-        updateCart();
 
+.newsletter p {
+    color: #c5b9bc;
+}
+
+
+.newsletter form {
+    display: flex;
+
+    margin-top: 30px;
+
+    background: white;
+
+    padding: 5px;
+
+    border-radius: 30px;
+}
+
+
+.newsletter input {
+    flex: 1;
+
+    border: none;
+
+    outline: none;
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+}
+
+
+.newsletter button {
+    border: none;
+
+    background: var(--pink);
+
+    padding: 12px 25px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #171213;
+
+    color: white;
+
+    padding: 65px 25px 25px;
+}
+
+
+.footer-inner {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
+
+    gap: 45px;
+}
+
+
+.footer-brand h2 {
+    font-family: "Playfair Display", serif;
+}
+
+
+.footer-brand p {
+    color: #918587;
+
+    margin-top: 10px;
+}
+
+
+.footer-inner h3 {
+    font-size: 14px;
+
+    margin-bottom: 15px;
+}
+
+
+.footer-inner a,
+.footer-inner p {
+    display: block;
+
+    color: #918587;
+
+    font-size: 12px;
+
+    margin-bottom: 8px;
+}
+
+
+.copyright {
+    max-width: 1100px;
+
+    margin: 45px auto 0;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #30292b;
+
+    text-align: center;
+
+    color: #716769;
+
+    font-size: 11px;
+}
+
+
+/* ================= CART ================= */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 200;
+
+    background: rgba(0,0,0,.45);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .3s;
+}
+
+
+.overlay.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.cart {
+    position: fixed;
+
+    right: -430px;
+
+    top: 0;
+
+    width: 400px;
+
+    max-width: 90%;
+
+    height: 100vh;
+
+    z-index: 201;
+
+    background: white;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: .35s;
+}
+
+
+.cart.active {
+    right: 0;
+}
+
+
+.cart-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.cart-header h2 {
+    font-family: "Playfair Display", serif;
+}
+
+
+.cart-header button {
+    border: none;
+
+    background: none;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+.cart-items {
+    flex: 1;
+
+    overflow-y: auto;
+}
+
+
+.empty {
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: var(--gray);
+}
+
+
+.cart-item {
+    padding: 18px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.cart-item-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+
+.cart-item-name {
+    font-weight: 600;
+}
+
+
+.cart-item-price {
+    color: var(--pink-dark);
+
+    font-weight: 600;
+}
+
+
+.cart-item-bottom {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 12px;
+}
+
+
+.quantity {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.quantity button {
+    width: 28px;
+    height: 28px;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+
+.remove {
+    border: none;
+
+    background: none;
+
+    color: var(--pink-dark);
+
+    cursor: pointer;
+}
+
+
+.cart-bottom {
+    border-top: 1px solid var(--border);
+
+    padding-top: 20px;
+}
+
+
+.total {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+
+.total strong {
+    font-size: 20px;
+}
+
+
+.checkout {
+    width: 100%;
+
+    border: none;
+
+    background: var(--black);
+
+    color: white;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+/* ================= MODAL ================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 300;
+
+    background: rgba(0,0,0,.5);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.modal.active {
+    display: flex;
+}
+
+
+.modal-box {
+    width: 500px;
+
+    max-width: 100%;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    position: relative;
+}
+
+
+.close-modal {
+    position: absolute;
+
+    right: 20px;
+
+    top: 10px;
+
+    border: none;
+
+    background: none;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+.modal-box h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+}
+
+
+.modal-box > p {
+    color: var(--gray);
+
+    margin: 10px 0 20px;
+}
+
+
+.modal-box label {
+    display: block;
+
+    font-size: 12px;
+
+    margin: 14px 0 6px;
+}
+
+
+.modal-box input,
+.modal-box textarea {
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    padding: 13px;
+
+    border-radius: 8px;
+
+    outline: none;
+}
+
+
+.modal-box textarea {
+    min-height: 80px;
+
+    resize: vertical;
+}
+
+
+/* SUCCESS */
+
+.success-box {
+    width: 400px;
+
+    max-width: 100%;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 45px 30px;
+
+    text-align: center;
+}
+
+
+.success-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #dcf2e1;
+
+    color: #39834b;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+}
+
+
+.success-box h2 {
+    font-family: "Playfair Display", serif;
+
+    margin-top: 20px;
+}
+
+
+.success-box p {
+    color: var(--gray);
+
+    margin: 10px 0 20px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 950px) {
+
+    .product-grid {
+        grid-template-columns:
+            repeat(2,1fr);
     }
-);
+
+    .features {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width: 700px) {
+
+    .nav,
+    .cart-btn {
+        display: none;
+    }
+
+
+    .menu-btn {
+        display: block;
+    }
+
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+
+    .hero-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .about-inner {
+        grid-template-columns: 1fr;
+    }
+
+
+    .promotion-inner {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 30px;
+    }
+
+
+    .footer-inner {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+@media(max-width: 500px) {
+
+    .product-grid,
+    .features,
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+
+    .hero h1 {
+        font-size: 52px;
+    }
+
+
+    .hero-bg-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+
+    .bottle {
+        width: 120px;
+        height: 240px;
+    }
+
+
+    .promotion-inner {
+        padding: 45px 25px;
+    }
+
+
+    .newsletter h2 {
+        font-size: 32px;
+    }
+
+
+    .newsletter form {
+        flex-direction: column;
+
+        background: none;
+    }
+
+
+    .newsletter input {
+        background: white;
+
+        padding: 15px;
+    }
+
+
+    .newsletter button {
+        padding: 15px;
+    }
+
+}
