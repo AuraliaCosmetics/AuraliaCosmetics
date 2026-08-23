@@ -1542,3 +1542,9 @@ footer {
     line-height: 1;
     transform: translateY(-2px);
 }
+.footer-logo {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
