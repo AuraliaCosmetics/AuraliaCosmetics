@@ -1537,3 +1537,27 @@ footer {
     }
 
 }
+.logo {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    gap: 8px !important;
+}
+
+.logo img {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    max-width: 30px !important;
+    max-height: 30px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+.logo span {
+    display: inline-block !important;
+    white-space: nowrap !important;
+}
