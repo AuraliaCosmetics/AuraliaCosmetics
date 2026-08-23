@@ -1,1 +1,676 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>AuraliaCosmetics | Admin</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">A</div>
+
+            <div>
+                <strong>Auralia</strong>
+                <span>Cosmetics</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <button class="nav-item active" data-section="dashboard">
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+            <button class="nav-item" data-section="products">
+                <span>◈</span>
+                Sản phẩm
+            </button>
+
+            <button class="nav-item" data-section="orders">
+                <span>▣</span>
+                Đơn hàng
+            </button>
+
+            <button class="nav-item" data-section="revenue">
+                <span>↗</span>
+                Doanh thu
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button id="logoutBtn">
+                ⇥ Đăng xuất
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+                <h1 id="pageTitle">Dashboard</h1>
+                <p>Quản lý AuraliaCosmetics</p>
+            </div>
+
+            <div class="admin-profile">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong id="adminName">Admin</strong>
+                    <small>Administrator</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard" class="page active">
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon pink">
+                        ₫
+                    </div>
+
+                    <div>
+                        <span>Doanh thu</span>
+                        <strong id="totalRevenue">0₫</strong>
+                        <small>Đơn đã hoàn thành</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ▣
+                    </div>
+
+                    <div>
+                        <span>Đơn hàng</span>
+                        <strong id="totalOrders">0</strong>
+                        <small>Tất cả đơn hàng</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon gold">
+                        ◈
+                    </div>
+
+                    <div>
+                        <span>Sản phẩm</span>
+                        <strong id="totalProducts">0</strong>
+                        <small>Đang kinh doanh</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        ♙
+                    </div>
+
+                    <div>
+                        <span>Khách hàng</span>
+                        <strong id="totalCustomers">0</strong>
+                        <small>Tài khoản</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHART -->
+
+            <div class="dashboard-grid">
+
+                <div class="panel chart-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Doanh thu</h2>
+                            <p>Doanh thu theo ngày</p>
+                        </div>
+
+                        <select id="chartRange">
+                            <option value="7">7 ngày</option>
+                            <option value="14">14 ngày</option>
+                            <option value="30">30 ngày</option>
+                        </select>
+
+                    </div>
+
+                    <div class="chart">
+
+                        <div id="chartBars"></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ORDER STATUS -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Đơn hàng</h2>
+                            <p>Trạng thái hiện tại</p>
+                        </div>
+
+                    </div>
+
+                    <div id="orderStats"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT ORDERS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Đơn hàng gần đây</h2>
+                        <p>Các đơn hàng mới nhất</p>
+                    </div>
+
+                    <button class="outline-btn"
+                            onclick="showSection('orders')">
+                        Xem tất cả
+                    </button>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+                            <th>Mã đơn</th>
+                            <th>Khách hàng</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Ngày</th>
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="recentOrders"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRODUCTS -->
+
+        <section id="products" class="page">
+
+            <div class="page-actions">
+
+                <div>
+                    <h2>Sản phẩm</h2>
+                    <p>Quản lý sản phẩm AuraliaCosmetics</p>
+                </div>
+
+                <button class="primary-btn"
+                        onclick="openProductModal()">
+
+                    + Thêm sản phẩm
+
+                </button>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <input
+                    id="productSearch"
+                    placeholder="🔎 Tìm sản phẩm..."
+                >
+
+                <select id="productCategory">
+
+                    <option value="all">
+                        Tất cả danh mục
+                    </option>
+
+                    <option value="skincare">
+                        Chăm sóc da
+                    </option>
+
+                    <option value="makeup">
+                        Trang điểm
+                    </option>
+
+                    <option value="lips">
+                        Son môi
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+
+                            <th>Sản phẩm</th>
+                            <th>Danh mục</th>
+                            <th>Giá</th>
+                            <th>Tồn kho</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="productTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ORDERS -->
+
+        <section id="orders" class="page">
+
+            <div class="page-actions">
+
+                <div>
+                    <h2>Đơn hàng</h2>
+                    <p>Quản lý tất cả đơn hàng</p>
+                </div>
+
+                <select id="orderFilter">
+
+                    <option value="all">
+                        Tất cả
+                    </option>
+
+                    <option value="pending">
+                        Chờ xác nhận
+                    </option>
+
+                    <option value="confirmed">
+                        Đã xác nhận
+                    </option>
+
+                    <option value="shipping">
+                        Đang giao
+                    </option>
+
+                    <option value="completed">
+                        Hoàn thành
+                    </option>
+
+                    <option value="cancelled">
+                        Đã hủy
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+
+                            <th>Mã đơn</th>
+                            <th>Khách hàng</th>
+                            <th>SĐT</th>
+                            <th>Tổng</th>
+                            <th>Thanh toán</th>
+                            <th>Trạng thái</th>
+                            <th></th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="ordersTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- REVENUE -->
+
+        <section id="revenue" class="page">
+
+            <div class="page-actions">
+
+                <div>
+                    <h2>Doanh thu</h2>
+                    <p>Phân tích hiệu quả kinh doanh</p>
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon pink">
+                        ₫
+                    </div>
+
+                    <div>
+
+                        <span>Tổng doanh thu</span>
+
+                        <strong id="revenueTotal">
+                            0₫
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ◉
+                    </div>
+
+                    <div>
+
+                        <span>Giá trị đơn TB</span>
+
+                        <strong id="averageOrder">
+                            0₫
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>Doanh thu theo ngày</h2>
+
+                    </div>
+
+                </div>
+
+                <div class="big-chart">
+
+                    <div id="revenueBars"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- PRODUCT MODAL -->
+
+<div class="modal" id="productModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="productModalTitle">
+                Thêm sản phẩm
+            </h2>
+
+            <button onclick="closeProductModal()">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="productForm">
+
+            <input type="hidden" id="productId">
+
+
+            <label>
+                Tên sản phẩm
+
+                <input id="productName"
+                       required>
+            </label>
+
+
+            <label>
+                Slug
+
+                <input id="productSlug"
+                       required>
+            </label>
+
+
+            <label>
+                Mô tả
+
+                <textarea id="productDescription"></textarea>
+            </label>
+
+
+            <div class="form-grid">
+
+                <label>
+
+                    Giá
+
+                    <input
+                        id="productPrice"
+                        type="number"
+                        min="0"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Giá sale
+
+                    <input
+                        id="productSale"
+                        type="number"
+                        min="0"
+                    >
+
+                </label>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <label>
+
+                    Danh mục
+
+                    <select id="productCat">
+
+                        <option value="skincare">
+                            Chăm sóc da
+                        </option>
+
+                        <option value="makeup">
+                            Trang điểm
+                        </option>
+
+                        <option value="lips">
+                            Son môi
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+
+                    Tồn kho
+
+                    <input
+                        id="productStock"
+                        type="number"
+                        min="0"
+                        required
+                    >
+
+                </label>
+
+            </div>
+
+
+            <label>
+
+                URL hình ảnh
+
+                <input
+                    id="productImage"
+                    placeholder="images/product.jpg"
+                >
+
+            </label>
+
+
+            <label class="checkbox">
+
+                <input
+                    id="productActive"
+                    type="checkbox"
+                    checked
+                >
+
+                Đang bán
+
+            </label>
+
+
+            <button class="primary-btn">
+                Lưu sản phẩm
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ORDER MODAL -->
+
+<div class="modal" id="orderModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Chi tiết đơn hàng</h2>
+
+            <button onclick="closeOrderModal()">
+                ×
+            </button>
+
+        </div>
+
+        <div id="orderDetail"></div>
+
+    </div>
+
+</div>
+
+
+<script src="admin.js"></script>
+
+</body>
+</html>
