@@ -225,13 +225,11 @@ textarea {
     display: block;
 
     color: var(--pink-dark);
-    front-size: 24px;
-    front-weight: normal;
 }
 
 
 .hero-content > p {
-    max-width: 530px;
+    max-width: 1000px;
 
     color: var(--gray);
 
