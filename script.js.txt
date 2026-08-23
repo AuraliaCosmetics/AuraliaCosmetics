@@ -1,162 +1,91 @@
 /* =====================================================
    AURALIA COSMETICS
-   JAVASCRIPT
+   SHOPPING CART
 ===================================================== */
 
 
-/* ================= PRODUCT DATA ================= */
+/* ================= PRODUCTS ================= */
 
 const products = [
 
     {
         id: 1,
-
         name: "Glow Beauty Serum",
-
         category: "skincare",
-
         categoryName: "CHĂM SÓC DA",
-
         price: 289000,
-
-        description:
-            "Serum dưỡng sáng và cấp ẩm cho làn da.",
-
-        image:
-            "images/product-01.jpg"
+        description: "Serum dưỡng sáng và cấp ẩm cho làn da.",
+        image: "images/product-01.jpg"
     },
-
 
     {
         id: 2,
-
         name: "Velvet Lip Cream",
-
         category: "lips",
-
         categoryName: "SON MÔI",
-
         price: 199000,
-
-        description:
-            "Son kem lì mềm mịn với màu sắc trẻ trung.",
-
-        image:
-            "images/product-02.jpg"
+        description: "Son kem lì mềm mịn với màu sắc trẻ trung.",
+        image: "images/product-02.jpg"
     },
-
 
     {
         id: 3,
-
         name: "Soft Blush",
-
         category: "makeup",
-
         categoryName: "TRANG ĐIỂM",
-
         price: 229000,
-
-        description:
-            "Má hồng mịn nhẹ tạo hiệu ứng tự nhiên.",
-
-        image:
-            "images/product-03.jpg"
+        description: "Má hồng mịn nhẹ tạo hiệu ứng tự nhiên.",
+        image: "images/product-03.jpg"
     },
-
 
     {
         id: 4,
-
         name: "Daily Moisture Cream",
-
         category: "skincare",
-
         categoryName: "CHĂM SÓC DA",
-
         price: 259000,
-
-        description:
-            "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
-
-        image:
-            "images/product-04.jpg"
+        description: "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
+        image: "images/product-04.jpg"
     },
-
 
     {
         id: 5,
-
         name: "Nude Lip Gloss",
-
         category: "lips",
-
         categoryName: "SON MÔI",
-
         price: 179000,
-
-        description:
-            "Son bóng trong trẻo cho đôi môi căng mọng.",
-
-        image:
-            "images/product-02.jpg"
+        description: "Son bóng trong trẻo cho đôi môi căng mọng.",
+        image: "images/product-02.jpg"
     },
-
 
     {
         id: 6,
-
         name: "Pure Skin Toner",
-
         category: "skincare",
-
         categoryName: "CHĂM SÓC DA",
-
         price: 219000,
-
-        description:
-            "Toner cân bằng và làm dịu làn da.",
-
-        image:
-            "images/product-01.jpg"
+        description: "Toner cân bằng và làm dịu làn da.",
+        image: "images/product-01.jpg"
     },
-
 
     {
         id: 7,
-
         name: "Silky Foundation",
-
         category: "makeup",
-
         categoryName: "TRANG ĐIỂM",
-
         price: 329000,
-
-        description:
-            "Kem nền mỏng nhẹ với độ che phủ tự nhiên.",
-
-        image:
-            "images/product-03.jpg"
+        description: "Kem nền mỏng nhẹ với độ che phủ tự nhiên.",
+        image: "images/product-03.jpg"
     },
-
 
     {
         id: 8,
-
         name: "Rose Blush",
-
         category: "makeup",
-
         categoryName: "TRANG ĐIỂM",
-
         price: 239000,
-
-        description:
-            "Phấn má sắc hồng nhẹ nhàng và nữ tính.",
-
-        image:
-            "images/product-03.jpg"
+        description: "Phấn má sắc hồng nhẹ nhàng và nữ tính.",
+        image: "images/product-03.jpg"
     }
 
 ];
@@ -167,44 +96,44 @@ const products = [
 let cart = [];
 
 
-/* ================= FORMAT PRICE ================= */
+/* ================= PRICE ================= */
 
-function formatPrice(price) {
+function money(number) {
 
-    return price.toLocaleString("vi-VN") + "₫";
+    return number.toLocaleString("vi-VN") + "₫";
 
 }
 
 
-/* ================= LOAD CART ================= */
+/* ================= LOAD ================= */
 
 function loadCart() {
 
-    const savedCart =
-        localStorage.getItem("auraliaCart");
+    const saved =
+        localStorage.getItem("AuraliaCosmeticsCart");
 
-    if (savedCart) {
+    if (saved) {
 
-        cart = JSON.parse(savedCart);
+        cart = JSON.parse(saved);
 
     }
 
 }
 
 
-/* ================= SAVE CART ================= */
+/* ================= SAVE ================= */
 
 function saveCart() {
 
     localStorage.setItem(
-        "auraliaCart",
+        "AuraliaCosmeticsCart",
         JSON.stringify(cart)
     );
 
 }
 
 
-/* ================= RENDER PRODUCTS ================= */
+/* ================= PRODUCTS ================= */
 
 function renderProducts(list = products) {
 
@@ -215,27 +144,10 @@ function renderProducts(list = products) {
     grid.innerHTML = "";
 
 
-    if (list.length === 0) {
-
-        grid.innerHTML = `
-            <p style="
-                grid-column:1/-1;
-                text-align:center;
-                padding:50px;
-            ">
-                Không tìm thấy sản phẩm.
-            </p>
-        `;
-
-        return;
-
-    }
-
-
     list.forEach(product => {
 
         const card =
-            document.createElement("article");
+            document.createElement("div");
 
 
         card.className =
@@ -249,7 +161,10 @@ function renderProducts(list = products) {
                 <img
                     src="${product.image}"
                     alt="${product.name}"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    onerror="
+                        this.style.display='none';
+                        this.nextElementSibling.style.display='flex';
+                    "
                 >
 
                 <div
@@ -265,31 +180,42 @@ function renderProducts(list = products) {
             <div class="product-info">
 
                 <div class="product-category">
+
                     ${product.categoryName}
+
                 </div>
 
+
                 <h3 class="product-name">
+
                     ${product.name}
+
                 </h3>
 
+
                 <p class="product-description">
+
                     ${product.description}
+
                 </p>
 
 
                 <div class="product-bottom">
 
-                    <div class="product-price">
-                        ${formatPrice(product.price)}
-                    </div>
+                    <strong class="product-price">
+
+                        ${money(product.price)}
+
+                    </strong>
 
 
                     <button
-                        class="add-button"
+                        class="add-btn"
                         onclick="addToCart(${product.id})"
-                        title="Thêm vào giỏ hàng"
                     >
+
                         +
+
                     </button>
 
                 </div>
@@ -311,10 +237,10 @@ function renderProducts(list = products) {
 function filterProducts(category, button) {
 
     document
-        .querySelectorAll(".category")
-        .forEach(btn => {
+        .querySelectorAll(".filter")
+        .forEach(item => {
 
-            btn.classList.remove("active");
+            item.classList.remove("active");
 
         });
 
@@ -324,7 +250,7 @@ function filterProducts(category, button) {
 
     if (category === "all") {
 
-        renderProducts(products);
+        renderProducts();
 
         return;
 
@@ -343,13 +269,13 @@ function filterProducts(category, button) {
 }
 
 
-/* ================= ADD CART ================= */
+/* ================= ADD ================= */
 
-function addToCart(productId) {
+function addToCart(id) {
 
     const product =
         products.find(
-            item => item.id === productId
+            product => product.id === id
         );
 
 
@@ -358,7 +284,7 @@ function addToCart(productId) {
 
     const existing =
         cart.find(
-            item => item.id === productId
+            item => item.id === id
         );
 
 
@@ -366,9 +292,7 @@ function addToCart(productId) {
 
         existing.quantity++;
 
-    }
-
-    else {
+    } else {
 
         cart.push({
 
@@ -389,41 +313,36 @@ function addToCart(productId) {
 
     updateCart();
 
-    showToast(
-        `${product.name} đã được thêm vào giỏ hàng.`
-    );
+    openCart();
 
 }
 
 
-/* ================= UPDATE CART ================= */
+/* ================= UPDATE ================= */
 
 function updateCart() {
 
-    const cartCount =
-        document.getElementById("cartCount");
-
-
-    const totalQuantity =
+    const count =
         cart.reduce(
-            (total, item) =>
-                total + item.quantity,
+            (sum, item) =>
+                sum + item.quantity,
             0
         );
 
 
-    cartCount.textContent =
-        totalQuantity;
+    document
+        .getElementById("cartCount")
+        .textContent = count;
 
 
-    renderCartItems();
+    renderCart();
 
 }
 
 
 /* ================= RENDER CART ================= */
 
-function renderCartItems() {
+function renderCart() {
 
     const container =
         document.getElementById("cartItems");
@@ -437,13 +356,17 @@ function renderCartItems() {
 
         container.innerHTML = `
 
-            <div class="empty-cart">
+            <div class="empty">
 
-                <div>🛍</div>
+                <div>
 
-                <p>
-                    Giỏ hàng của bạn đang trống.
-                </p>
+                    🛍
+
+                    <br><br>
+
+                    Giỏ hàng đang trống.
+
+                </div>
 
             </div>
 
@@ -459,10 +382,10 @@ function renderCartItems() {
     }
 
 
-    container.innerHTML = "";
-
-
     let total = 0;
+
+
+    container.innerHTML = "";
 
 
     cart.forEach(item => {
@@ -472,24 +395,28 @@ function renderCartItems() {
             item.quantity;
 
 
-        const element =
+        const div =
             document.createElement("div");
 
 
-        element.className =
+        div.className =
             "cart-item";
 
 
-        element.innerHTML = `
+        div.innerHTML = `
 
             <div class="cart-item-top">
 
                 <div class="cart-item-name">
+
                     ${item.name}
+
                 </div>
 
                 <div class="cart-item-price">
-                    ${formatPrice(item.price)}
+
+                    ${money(item.price)}
+
                 </div>
 
             </div>
@@ -508,9 +435,13 @@ function renderCartItems() {
                         −
                     </button>
 
+
                     <span>
+
                         ${item.quantity}
+
                     </span>
+
 
                     <button
                         onclick="changeQuantity(
@@ -525,10 +456,12 @@ function renderCartItems() {
 
 
                 <button
-                    class="remove-item"
-                    onclick="removeFromCart(${item.id})"
+                    class="remove"
+                    onclick="removeItem(${item.id})"
                 >
+
                     Xóa
+
                 </button>
 
             </div>
@@ -536,24 +469,24 @@ function renderCartItems() {
         `;
 
 
-        container.appendChild(element);
+        container.appendChild(div);
 
     });
 
 
     totalElement.textContent =
-        formatPrice(total);
+        money(total);
 
 }
 
 
-/* ================= CHANGE QUANTITY ================= */
+/* ================= QUANTITY ================= */
 
-function changeQuantity(productId, amount) {
+function changeQuantity(id, amount) {
 
     const item =
         cart.find(
-            item => item.id === productId
+            item => item.id === id
         );
 
 
@@ -567,7 +500,7 @@ function changeQuantity(productId, amount) {
 
         cart =
             cart.filter(
-                item => item.id !== productId
+                item => item.id !== id
             );
 
     }
@@ -582,11 +515,11 @@ function changeQuantity(productId, amount) {
 
 /* ================= REMOVE ================= */
 
-function removeFromCart(productId) {
+function removeItem(id) {
 
     cart =
         cart.filter(
-            item => item.id !== productId
+            item => item.id !== id
         );
 
 
@@ -602,17 +535,13 @@ function removeFromCart(productId) {
 function openCart() {
 
     document
-        .getElementById("cartDrawer")
+        .getElementById("cart")
         .classList.add("active");
 
 
     document
-        .getElementById("cartOverlay")
+        .getElementById("overlay")
         .classList.add("active");
-
-
-    document.body.style.overflow =
-        "hidden";
 
 }
 
@@ -622,29 +551,25 @@ function openCart() {
 function closeCart() {
 
     document
-        .getElementById("cartDrawer")
+        .getElementById("cart")
         .classList.remove("active");
 
 
     document
-        .getElementById("cartOverlay")
+        .getElementById("overlay")
         .classList.remove("active");
-
-
-    document.body.style.overflow =
-        "";
 
 }
 
 
 /* ================= CHECKOUT ================= */
 
-function openCheckout() {
+function checkout() {
 
     if (cart.length === 0) {
 
-        showToast(
-            "Vui lòng thêm sản phẩm trước khi đặt hàng."
+        alert(
+            "Giỏ hàng của bạn đang trống."
         );
 
         return;
@@ -670,92 +595,58 @@ function closeCheckout() {
 }
 
 
-/* ================= SUBMIT ORDER ================= */
+/* ================= ORDER ================= */
 
 function submitOrder(event) {
 
     event.preventDefault();
 
 
-    const name =
-        document
-            .getElementById("customerName")
-            .value;
-
-
-    const phone =
-        document
-            .getElementById("customerPhone")
-            .value;
-
-
-    const address =
-        document
-            .getElementById("customerAddress")
-            .value;
-
-
-    const note =
-        document
-            .getElementById("customerNote")
-            .value;
-
-
     const order = {
 
-        customer: {
+        name:
+            document.getElementById("name").value,
 
-            name: name,
+        phone:
+            document.getElementById("phone").value,
 
-            phone: phone,
+        address:
+            document.getElementById("address").value,
 
-            address: address,
+        note:
+            document.getElementById("note").value,
 
-            note: note
-
-        },
-
-
-        products: cart,
-
+        products:
+            [...cart],
 
         total:
             cart.reduce(
-                (total, item) =>
-                    total +
+                (sum, item) =>
+                    sum +
                     item.price *
                     item.quantity,
                 0
             ),
 
-
-        createdAt:
-            new Date().toISOString()
+        time:
+            new Date().toLocaleString("vi-VN")
 
     };
 
 
-    console.log(
-        "AURALIA ORDER:",
-        order
+    /*
+       LƯU ĐƠN HÀNG DEMO
+    */
+
+    localStorage.setItem(
+        "AuraliaCosmeticsLastOrder",
+        JSON.stringify(order)
     );
 
 
-    /*
-        DEMO:
-
-        Hiện tại đơn hàng chỉ được lưu
-        trong trình duyệt.
-
-        Khi triển khai thật, có thể kết nối
-        API / Google Sheets / Firebase /
-        Supabase / backend riêng.
-    */
-
-
-    localStorage.setItem(
-        "lastAuraliaOrder",
-        JSON.stringify(order)
+    console.log(
+        "AuraliaCosmetics Order:",
+        order
     );
 
 
@@ -772,13 +663,11 @@ function submitOrder(event) {
 
 
     document
-        .getElementById("successModal")
+        .getElementById("success")
         .classList.add("active");
 
 
-    document
-        .querySelector("#checkoutModal form")
-        .reset();
+    event.target.reset();
 
 }
 
@@ -788,7 +677,7 @@ function submitOrder(event) {
 function closeSuccess() {
 
     document
-        .getElementById("successModal")
+        .getElementById("success")
         .classList.remove("active");
 
 }
@@ -807,29 +696,25 @@ function subscribe(event) {
             .value;
 
 
-    if (!email) return;
-
-
     localStorage.setItem(
-        "auraliaSubscriber",
+        "AuraliaCosmeticsEmail",
         email
     );
 
 
-    document.getElementById("email").value =
-        "";
-
-
-    showToast(
-        "Cảm ơn bạn đã đăng ký cùng AURALIA!"
+    alert(
+        "Cảm ơn bạn đã đăng ký cùng AuraliaCosmetics!"
     );
+
+
+    event.target.reset();
 
 }
 
 
 /* ================= MOBILE MENU ================= */
 
-function toggleMobileMenu() {
+function toggleMenu() {
 
     document
         .getElementById("mobileMenu")
@@ -838,7 +723,7 @@ function toggleMobileMenu() {
 }
 
 
-function closeMobileMenu() {
+function closeMenu() {
 
     document
         .getElementById("mobileMenu")
@@ -847,114 +732,11 @@ function closeMobileMenu() {
 }
 
 
-/* ================= SCROLL PRODUCTS ================= */
-
-function scrollToProducts() {
-
-    document
-        .getElementById("products")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-}
-
-
-/* ================= TOAST ================= */
-
-function showToast(message) {
-
-    let toast =
-        document.getElementById("toast");
-
-
-    if (!toast) {
-
-        toast =
-            document.createElement("div");
-
-
-        toast.id = "toast";
-
-
-        toast.style.position =
-            "fixed";
-
-
-        toast.style.bottom =
-            "30px";
-
-
-        toast.style.left =
-            "50%";
-
-
-        toast.style.transform =
-            "translateX(-50%)";
-
-
-        toast.style.background =
-            "#241b1e";
-
-
-        toast.style.color =
-            "#fff";
-
-
-        toast.style.padding =
-            "14px 22px";
-
-
-        toast.style.borderRadius =
-            "30px";
-
-
-        toast.style.zIndex =
-            "999";
-
-
-        toast.style.fontSize =
-            "13px";
-
-
-        toast.style.boxShadow =
-            "0 10px 30px rgba(0,0,0,.2)";
-
-
-        document.body.appendChild(toast);
-
-    }
-
-
-    toast.textContent =
-        message;
-
-
-    toast.style.opacity =
-        "1";
-
-
-    clearTimeout(
-        window.toastTimer
-    );
-
-
-    window.toastTimer =
-        setTimeout(() => {
-
-            toast.style.opacity =
-                "0";
-
-        }, 2500);
-
-}
-
-
-/* ================= INIT ================= */
+/* ================= START ================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    () => {
+    function() {
 
         loadCart();
 
