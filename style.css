@@ -1539,5 +1539,6 @@ footer {
 
 .logo span {
     font-size: 40px;
+    line-height: 1;
     transform: translateY(-3px);
 }
