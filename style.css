@@ -90,7 +90,7 @@ textarea {
 
     display: flex;
 
-    align-items: center;
+    align-items: left;
 
     gap: 10px;
 }
