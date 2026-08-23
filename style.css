@@ -1538,6 +1538,7 @@ footer {
 }
 
 .logo span {
-    display: inline-block !important;
-    white-space: nowrap !important;
+    font-size: 20px;
+    line-height: 1;
+    transform: translateY(-4px);
 }
