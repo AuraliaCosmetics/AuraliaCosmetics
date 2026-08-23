@@ -88,26 +88,6 @@ textarea {
 
     letter-spacing: 1px;
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-    white-space: nowrap;
-}
-
-.logo img {
-    width: 32px !important;
-
-    height: 32px !important;
-
-    max-width: 32px !important;
-
-    max-height: 32px !important;
-
-    object-fit: contain;
-
-    display: block;
 }
 
 
