@@ -11,7 +11,7 @@ const products = [
     {
         id: 1,
         name: "ROSE FLAME",
-        category: "eyeshadow",
+        category: "makeup",
         categoryName: "PHẤN MẮT",
         price: 289000,
         description: "Serum dưỡng sáng và cấp ẩm cho làn da.",
@@ -41,7 +41,7 @@ const products = [
     {
         id: 4,
         name: "MOCHA AURA",
-        category: "eyeshadow",
+        category: "makeup",
         categoryName: "PHẤN MẮT",
         price: 259000,
         description: "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
@@ -61,7 +61,7 @@ const products = [
     {
         id: 6,
         name: "PEACH BLOOM",
-        category: "eyeshadow",
+        category: "makeup",
         categoryName: "PHẤN MẮT",
         price: 219000,
         description: "Toner cân bằng và làm dịu làn da.",
