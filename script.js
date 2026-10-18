@@ -15,7 +15,7 @@ const products = [
         categoryName: "CUSHION",
         price: 289000,
         description: "Dành Riêng Cho Da Dầu Và Da Hỗn Hợp Thiên Dầu.",
-        image: "images/product-01.jpg"
+        image: "images/anh6.png"
     },
 
     {
@@ -25,7 +25,7 @@ const products = [
         categoryName: "SON MÔI",
         price: 199000,
         description: "Một Chạm, Vạn Sắc.",
-        image: "images/product-02.jpg"
+        image: "images/anh5.png"
     },
 
     {
@@ -35,7 +35,7 @@ const products = [
         categoryName: "PHẤN MẮT",
         price: 229000,
         description: "Biến Hóa Trong Từng Ánh Nhìn .",
-        image: "images/product-03.jpg"
+        image: "images/phanmat.png"
     },
 
     {
@@ -45,7 +45,7 @@ const products = [
         categoryName: "CUSHION",
         price: 259000,
         description: " Thiết Kế Dành Cho Làn Da Khô Và Thiếu Ẩm.",
-        image: "images/product-04.jpg"
+        image: "images/anh9.png"
     },
 
     {
@@ -55,7 +55,7 @@ const products = [
         categoryName: "SON MÔI",
         price: 179000,
         description: "Mềm Như Nhung, Đẹp Như Mơ.",
-        image: "images/product-02.jpg"
+        image: "images/anh4.png"
     },
 
     {
@@ -65,7 +65,7 @@ const products = [
         categoryName: "MÁ HỒNG",
         price: 219000,
         description: " Tươi Tắn, Rạng Rỡ.",
-        image: "images/product-01.jpg"
+        image: "images/anh2.png"
     },
 
     {
@@ -75,7 +75,7 @@ const products = [
         categoryName: "PHẤN MẮT",
         price: 329000,
         description: "Chạm Sắc Trầm , Tỏa Khí Chất.",
-        image: "images/product-03.jpg"
+        image: "images/anh10.png"
     },
 
     {
@@ -84,8 +84,8 @@ const products = [
         category: "makeup",
         categoryName: "PHẤN MẮT",
         price: 239000,
-        description: "Một Chút Đào, Vạn Nét Xinh.",
-        image: "images/product-03.jpg"
+        description: "Một Chút Đào ,Vạn Nét Xinh.",
+        image: "images/anh11.png"
     },
     {
         id: 9,
@@ -94,7 +94,7 @@ const products = [
         categoryName: "MÁ HỒNG",
         price: 269000,
         description: "Căng Mịn, Tự Nhiên.",
-        image: "images/product-04.jpg"
+        image: "images/anh8.png"
     },
     {
         id: 10,
@@ -103,7 +103,7 @@ const products = [
         categoryName: "PHẤN PHỦ",
         price: 189000,
         description: "Tạo hiệu ứng nền mịn, tự nhiên.",
-        image: "images/product-03.jpg"
+        image: "images/anh12.png"
     },
     {
         id: 11,
@@ -112,7 +112,7 @@ const products = [
         categoryName: "SON MÔI",
         price: 209000,
         description: "Sắc Lì Phủ Môi, Thần Thái Lên Ngôi.",
-        image: "images/product-02.jpg"
+        image: "images/anh1.png"
     },
     {
         id: 12,
@@ -121,7 +121,7 @@ const products = [
         categoryName: "SON MÔI",
         price: 199000,
         description: "Sắc Đất, Nét Riêng.",
-        image: "images/product-02.jpg"
+        image: "images/anh3.png"
     },
    {
         id: 13,
@@ -130,7 +130,7 @@ const products = [
         categoryName: "PHẤN PHỦ",
         price: 189000,
         description: "Cho hiệu ứng da mịn, nhẹ và tự nhiên.",
-        image: "images/product-03.jpg"
+        image: "images/anh7.png"
     },
 
 ];
