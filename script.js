@@ -98,11 +98,11 @@ const products = [
     },
     {
         id: 10,
-        name: "Peach Cheek Tint",
-        category: "makeup",
-        categoryName: "TRANG ĐIỂM",
+        name: " Phấn Phủ Bột Auralia",
+        category: "powder",
+        categoryName: "PHẤN PHỦ",
         price: 189000,
-        description: "Má hồng dạng kem dễ tán với sắc đào tự nhiên.",
+        description: "Tạo hiệu ứng nền mịn, tự nhiên.",
         image: "images/product-03.jpg"
     },
     {
