@@ -60,11 +60,11 @@ const products = [
 
     {
         id: 6,
-        name: "Pure Skin Toner",
-        category: "skincare",
-        categoryName: "CUSHION",
+        name: "Blush Veil",
+        category: "blusher",
+        categoryName: "MÁ HỒNG",
         price: 219000,
-        description: "Toner cân bằng và làm dịu làn da.",
+        description: " Tươi Tắn, Rạng Rỡ.",
         image: "images/product-01.jpg"
     },
 
@@ -90,10 +90,10 @@ const products = [
     {
         id: 9,
         name: "Hydra Glow Essence",
-        category: "skincare",
-        categoryName: "CUSHION",
+        category: "blusher",
+        categoryName: "MÁ HỒNG",
         price: 269000,
-        description: "Tinh chất cấp ẩm giúp da mềm mại và rạng rỡ.",
+        description: "Căng Mịn, Tự Nhiên.",
         image: "images/product-04.jpg"
     },
     {
