@@ -50,7 +50,7 @@ textarea {
 /* ================= HEADER ================= */
 
 .header {
-    position: static;
+    position: sticky;
     top: 0;
     z-index: 100;
 
