@@ -729,11 +729,7 @@ textarea {
     border-radius: 25px;
 
     background:
-        linear-gradient(
-            145deg,
-            #e6abb8,
-            #f6dbe1
-        );
+        url("images/phanmat.png") center / cover no-repeat;
 
     display: flex;
 
