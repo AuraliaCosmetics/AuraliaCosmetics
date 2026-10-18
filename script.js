@@ -98,7 +98,7 @@ const products = [
     },
     {
         id: 10,
-        name: " Phấn Phủ Bột Auralia",
+        name: "Phấn Phủ Bột Auralia",
         category: "powder",
         categoryName: "PHẤN PHỦ",
         price: 189000,
@@ -122,7 +122,16 @@ const products = [
         price: 199000,
         description: "Sắc Đất, Nét Riêng.",
         image: "images/product-02.jpg"
-    }
+    },
+   {
+        id: 13,
+        name: "Phấn Phủ Nén Auralia",
+        category: "powder",
+        categoryName: "PHẤN PHỦ",
+        price: 189000,
+        description: "Cho hiệu ứng da mịn, nhẹ và tự nhiên.",
+        image: "images/product-03.jpg"
+    },
 
 ];
 
