@@ -183,11 +183,9 @@ textarea {
 
 .hero {
     background:
-        linear-gradient(
-            120deg,
-            #fff8f9,
-            #f3d9df
-        );
+    linear-gradient(rgba(255, 248, 249, 0.35), rgba(243, 217, 223, 0.35)),
+    url("images/background-auralia.png") center / cover no-repeat;
+    
 }
 
 
