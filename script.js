@@ -10,9 +10,9 @@ const products = [
 
     {
         id: 1,
-        name: "ROSE FLAME",
-        category: "makeup",
-        categoryName: "PHẤN MẮT",
+        name: "Glow Beauty Serum",
+        category: "skincare",
+        categoryName: "CHĂM SÓC DA",
         price: 289000,
         description: "Serum dưỡng sáng và cấp ẩm cho làn da.",
         image: "images/product-01.jpg"
@@ -20,11 +20,11 @@ const products = [
 
     {
         id: 2,
-        name: " LUMI TINT",
+        name: "Velvet Lip Cream",
         category: "lips",
         categoryName: "SON MÔI",
         price: 199000,
-        description: "Một chạm, vạn sắc.",
+        description: "Son kem lì mềm mịn với màu sắc trẻ trung.",
         image: "images/product-02.jpg"
     },
 
@@ -40,9 +40,9 @@ const products = [
 
     {
         id: 4,
-        name: "MOCHA AURA",
-        category: "makeup",
-        categoryName: "PHẤN MẮT",
+        name: "Daily Moisture Cream",
+        category: "skincare",
+        categoryName: "CHĂM SÓC DA",
         price: 259000,
         description: "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
         image: "images/product-04.jpg"
@@ -50,19 +50,19 @@ const products = [
 
     {
         id: 5,
-        name: "CLAY MOOD",
+        name: "Nude Lip Gloss",
         category: "lips",
         categoryName: "SON MÔI",
         price: 179000,
-        description: "Sắc đất, nét riêng.",
+        description: "Son bóng trong trẻo cho đôi môi căng mọng.",
         image: "images/product-02.jpg"
     },
 
     {
         id: 6,
-        name: "PEACH BLOOM",
-        category: "makeup",
-        categoryName: "PHẤN MẮT",
+        name: "Pure Skin Toner",
+        category: "skincare",
+        categoryName: "CHĂM SÓC DA",
         price: 219000,
         description: "Toner cân bằng và làm dịu làn da.",
         image: "images/product-01.jpg"
@@ -86,26 +86,7 @@ const products = [
         price: 239000,
         description: "Phấn má sắc hồng nhẹ nhàng và nữ tính.",
         image: "images/product-03.jpg"
-    },
-    
-    {
-        id: 9,
-        name: "VELVET CLOUD",
-        category: "lips",
-        categoryName: "SON MÔI",
-        price: 179000,
-        description: "Mềm như nhung đẹp như mơ.",
-        image: "images/product-02.jpg"
-    },
-    {
-        id: 10,
-        name: "PURE MATTE",
-        category: "lips",
-        categoryName: "SON MÔI",
-        price: 179000,
-        description: "Sắc lì phủ môi, thần thái lên ngôi.",
-        image: "images/product-02.jpg"
-    },
+    }
 
 ];
 
