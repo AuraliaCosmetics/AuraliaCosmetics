@@ -1,752 +1,126 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Auralia Cosmetics | Mỹ phẩm chính hãng</title>
-
-    <meta name="description"
-          content="Auralia Cosmetics - Khám phá vẻ đẹp riêng của bạn.">
-
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-          rel="stylesheet">
-</head>
-
-<body>
-
-<!-- ================= HEADER ================= -->
-
-<header class="header">
-
-    <div class="header-inner">
-
-    <a href="#home" class="logo">
-         <img src="images/auralia-Photoroom.png" alt="Auralia Cosmetics">
-           <span>Auralia Cosmetics</span> 
-        </a>
-
-        <nav class="nav">
-
-            <a href="#home">Trang chủ</a>
-
-            <a href="#products">Sản phẩm</a>
-
-            <a href="#about">Về chúng tôi</a>
-
-            <a href="#contact">Liên hệ</a>
-
-        </nav>
-
-        <button class="cart-btn" onclick="openCart()">
-
-            🛍 Giỏ hàng
-
-            <span id="cartCount">0</span>
-
-        </button>
-
-        <button class="menu-btn"
-                onclick="toggleMenu()">
-
-            ☰
-
-        </button>
-
-    </div>
-
-
-    <div id="mobileMenu"
-         class="mobile-menu">
-
-        <a href="#home"
-           onclick="closeMenu()">
-            Trang chủ
-        </a>
-
-        <a href="#products"
-           onclick="closeMenu()">
-            Sản phẩm
-        </a>
-
-        <a href="#about"
-           onclick="closeMenu()">
-            Về chúng tôi
-        </a>
-
-        <a href="#contact"
-           onclick="closeMenu()">
-            Liên hệ
-        </a>
-
-    </div>
-
-</header>
-
-
-<!-- ================= HERO ================= -->
-
-<section id="home"
-         class="hero">
-
-    <div class="hero-inner">
-
-        <div class="hero-content">
-
-            <div class="eyebrow">
-                AURALIA COSMETICS
-            </div>
-
-            <h1>
-               Make Your Aura
-                <span style="font-size: 40px; font-weight: 400;">Tạo nên khí chất của riêng bạn</span>
-            </h1>
-
-            <p>
-
-                Khám phá bộ sưu tập mỹ phẩm
-                được lựa chọn dành cho những
-                cô gái hiện đại, tự tin và
-                yêu vẻ đẹp riêng của mình.
-
-            </p>
-
-            <a href="#products"
-               class="main-btn">
-
-                KHÁM PHÁ SẢN PHẨM
-                <span>→</span>
-
-            </a>
-
-        </div>
-
-
-        <div class="hero-visual">
-
-            <div class="hero-bg-circle"></div>
-
-            <div class="cosmetic-bottle">
-
-                <div class="cap"></div>
-
-                <div class="bottle">
-
-                    <div class="bottle-text">
-
-                        <small>
-                            AURALIA
-                        </small>
-
-                        <strong>
-                            GLOW
-                        </strong>
-
-                        <span>
-                            BEAUTY SERUM
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="hero-word">
-                BEAUTY
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FEATURES ================= -->
-
-<section class="features">
-
-    <div class="feature">
-
-        <div class="feature-icon">
-            ✦
-        </div>
-
-        <div>
-
-            <strong>
-                Sản phẩm chất lượng
-            </strong>
-
-            <p>
-                Lựa chọn kỹ càng
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="feature">
-
-        <div class="feature-icon">
-            ♡
-        </div>
-
-        <div>
-
-            <strong>
-                Phù hợp phong cách
-            </strong>
-
-            <p>
-                Dành riêng cho bạn
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="feature">
-
-        <div class="feature-icon">
-            ✓
-        </div>
-
-        <div>
-
-            <strong>
-                Đóng gói cẩn thận
-            </strong>
-
-            <p>
-                Giao hàng toàn quốc
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="feature">
-
-        <div class="feature-icon">
-            ✧
-        </div>
-
-        <div>
-
-            <strong>
-                Hỗ trợ tận tâm
-            </strong>
-
-            <p>
-                Đồng hành cùng bạn
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PRODUCTS ================= -->
-
-<section id="products"
-         class="products-section">
-
-    <div class="section-title">
-
-        <span>
-            OUR COLLECTION
-        </span>
-
-        <h2>
-            Sản phẩm nổi bật
-        </h2>
-
-        <p>
-            Khám phá những sản phẩm được yêu thích
-            tại Auralia Cosmetics.
-        </p>
-
-    </div>
-
-
-    <!-- FILTER -->
-
-    <div class="filters">
-
-        <button class="filter active"
-                onclick="filterProducts('all', this)">
-            Tất cả
-        </button>
-
-        <button class="filter"
-                onclick="filterProducts('makeup', this)">
-            Phấn mắt
-        </button>
-
-        <button class="filter"
-                onclick="filterProducts('makeup', this)">
-            Cushion
-        </button>
-
-        <button class="filter"
-                onclick="filterProducts('lips', this)">
-            Son
-        <button class="filter"
-                onclick="filterProducts('makeup', this)">
-            Má hồng
-        </button>
-            
-            <button class="filter"
-                onclick="filterProducts('makeup', this)">
-            Phấn phủ
-                  </button>
-
-
-    </div>
-
-
-    <div id="productGrid"
-         class="product-grid">
-    </div>
-
-</section>
-
-
-<!-- ================= ABOUT ================= -->
-
-<section id="about"
-         class="about">
-
-    <div class="about-inner">
-
-        <div class="about-image">
-
-            <div class="about-card">
-
-                <span>
-                    AURALIA
-                </span>
-
-                <strong>
-                    BE YOUR
-                    <br>
-                    OWN BEAUTY
-                </strong>
-
-                <small>
-                    COSMETICS
-                </small>
-
-            </div>
-
-        </div>
-
-
-        <div class="about-text">
-
-            <span class="section-label">
-                ABOUT US
-            </span>
-
-            <h2>
-                Vẻ đẹp riêng
-                <br>
-                của bạn.
-            </h2>
-
-            <p>
-
-                Auralia Cosmetics hướng tới trở thành
-                thương hiệu mỹ phẩm được giới trẻ
-                Việt Nam yêu thích.
-
-            </p>
-
-            <p>
-
-                Chúng tôi cung cấp những sản phẩm
-                chất lượng, phù hợp nhu cầu và
-                phong cách cá nhân.
-
-            </p>
-
-            <p>
-
-                Auralia Cosmetics tin rằng mỗi người
-                đều sở hữu một vẻ đẹp rất riêng.
-                Hãy để vẻ đẹp ấy được tỏa sáng.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PROMOTION ================= -->
-
-<section class="promotion">
-
-    <div class="promotion-inner">
-
-        <div>
-
-            <span>
-                AURALIA SPECIAL
-            </span>
-
-            <h2>
-                Ưu đãi 15%
-                <br>
-                cho đơn hàng đầu tiên.
-            </h2>
-
-            <p>
-                Áp dụng cho khách hàng mới.
-            </p>
-
-        </div>
-
-        <a href="#products"
-           class="white-btn">
-
-            MUA NGAY →
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ================= NEWSLETTER ================= -->
-
-<section id="contact"
-         class="newsletter">
-
-    <div class="newsletter-inner">
-
-        <span>
-            STAY BEAUTIFUL
-        </span>
-
-        <h2>
-            Cùng Auralia Cosmetics
-            <br>
-            khám phá vẻ đẹp riêng.
-        </h2>
-
-        <p>
-            Đăng ký email để nhận thông tin
-            sản phẩm và ưu đãi mới nhất.
-        </p>
-
-
-        <form onsubmit="subscribe(event)">
-
-            <input
-                id="email"
-                type="email"
-                placeholder="Email của bạn..."
-                required
-            >
-
-            <button>
-                ĐĂNG KÝ
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <div class="footer-inner">
-
-        <div class="footer-brand">
-
-            <h2>
-                Auralia Cosmetics
-            </h2>
-
-            <p>
-                Beauty made personal.
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Khám phá
-            </h3>
-
-            <a href="#home">
-                Trang chủ
-            </a>
-
-            <a href="#products">
-                Sản phẩm
-            </a>
-
-            <a href="#about">
-                Về chúng tôi
-            </a>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Hỗ trợ
-            </h3>
-
-            <a href="#">
-                Chính sách giao hàng
-            </a>
-
-            <a href="#">
-                Chính sách đổi trả
-            </a>
-
-            <a href="#">
-                Chính sách bảo mật
-            </a>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Liên hệ
-            </h3>
-
-            <p>
-                📞 + 84768028592
-            </p>
-
-            <p>
-                ✉ Auraliacosmetics.vn@gmail.com
-            </p>
-
-            <p>
-                📍 80 Hàng Trống, Hoàn Kiếm, Hà Nội
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="copyright">
-
-        © 2026 Auralia Cosmetics.
-        All Rights Reserved.
-       <div>
-            <img src="images/troll.jpeg" alt="Logo" class="footer-logo">
-           Developed by Anh Huy Đz
-
-    </div>
-
-</footer>
-
-
-<!-- ================= CART ================= -->
-
-<div id="overlay"
-     class="overlay"
-     onclick="closeCart()">
-</div>
-
-
-<div id="cart"
-     class="cart">
-
-    <div class="cart-header">
-
-        <h2>
-            Giỏ hàng
-        </h2>
-
-        <button onclick="closeCart()">
-            ×
-        </button>
-
-    </div>
-
-
-    <div id="cartItems"
-         class="cart-items">
-
-    </div>
-
-
-    <div class="cart-bottom">
-
-        <div class="total">
-
-            <span>
-                Tổng cộng
-            </span>
-
-            <strong id="cartTotal">
-                0₫
-            </strong>
-
-        </div>
-
-        <button onclick="checkout()"
-                class="checkout">
-
-            ĐẶT HÀNG
-
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- ================= CHECKOUT ================= -->
-
-<div id="checkoutModal"
-     class="modal">
-
-    <div class="modal-box">
-
-        <button class="close-modal"
-                onclick="closeCheckout()">
-            ×
-        </button>
-
-        <h2>
-            Thông tin đặt hàng
-        </h2>
-
-        <p>
-            Nhập thông tin để Auralia Cosmetics
-            liên hệ xác nhận đơn hàng.
-        </p>
-
-
-        <form onsubmit="submitOrder(event)">
-
-            <label>
-                Họ và tên
-            </label>
-
-            <input
-                id="name"
-                type="text"
-                placeholder="Nguyễn Văn A"
-                required
-            >
-
-
-            <label>
-                Số điện thoại
-            </label>
-
-            <input
-                id="phone"
-                type="tel"
-                placeholder="0123 456 789"
-                required
-            >
-
-
-            <label>
-                Địa chỉ
-            </label>
-
-            <textarea
-                id="address"
-                placeholder="Địa chỉ nhận hàng"
-                required>
-            </textarea>
-
-
-            <label>
-                Ghi chú
-            </label>
-
-            <textarea
-                id="note"
-                placeholder="Ghi chú cho shop">
-            </textarea>
-
-
-            <button class="checkout"
-                    type="submit">
-
-                XÁC NHẬN ĐẶT HÀNG
-
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-<!-- ================= SUCCESS ================= -->
-
-<div id="success"
-     class="modal">
-
-    <div class="success-box">
-
-        <div class="success-icon">
-            ✓
-        </div>
-
-        <h2>
-            Đặt hàng thành công!
-        </h2>
-
-        <p>
-            Auralia Cosmetics sẽ liên hệ
-            với bạn để xác nhận đơn hàng.
-        </p>
-
-        <button onclick="closeSuccess()"
-                class="checkout">
-
-            HOÀN TẤT
-
-        </button>
-
-    </div>
-
-</div>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
+/* ================= PRODUCTS ================= */
+
+const products = [
+
+    {
+        id: 1,
+        name: "ROSE FLAME",
+        category: "makeup",
+        categoryName: "PHẤN MẮT",
+        price: 289000,
+        description: "Bảng phấn mắt tông hồng quyến rũ.",
+        image: "images/product-01.jpg"
+    },
+
+    {
+        id: 2,
+        name: "LUMI TINT",
+        category: "lips",
+        categoryName: "SON MÔI",
+        price: 199000,
+        description: "Một chạm, vạn sắc.",
+        image: "images/product-02.jpg"
+    },
+
+    {
+        id: 3,
+        name: "SOFT BLUSH",
+        category: "makeup",
+        categoryName: "MÁ HỒNG",
+        price: 229000,
+        description: "Má hồng mịn nhẹ tạo hiệu ứng tự nhiên.",
+        image: "images/product-03.jpg"
+    },
+
+    {
+        id: 4,
+        name: "MOCHA AURA",
+        category: "makeup",
+        categoryName: "PHẤN MẮT",
+        price: 259000,
+        description: "Sắc nâu mocha thanh lịch và thời thượng.",
+        image: "images/product-04.jpg"
+    },
+
+    {
+        id: 5,
+        name: "CLAY MOOD",
+        category: "lips",
+        categoryName: "SON MÔI",
+        price: 179000,
+        description: "Sắc đất, nét riêng.",
+        image: "images/product-02.jpg"
+    },
+
+    {
+        id: 6,
+        name: "PEACH BLOOM",
+        category: "makeup",
+        categoryName: "PHẤN MẮT",
+        price: 219000,
+        description: "Tông đào ngọt ngào cho đôi mắt rạng rỡ.",
+        image: "images/product-01.jpg"
+    },
+
+    {
+        id: 7,
+        name: "SILKY FOUNDATION",
+        category: "makeup",
+        categoryName: "KEM NỀN",
+        price: 329000,
+        description: "Kem nền mỏng nhẹ với độ che phủ tự nhiên.",
+        image: "images/product-03.jpg"
+    },
+
+    {
+        id: 8,
+        name: "ROSE BLUSH",
+        category: "makeup",
+        categoryName: "MÁ HỒNG",
+        price: 239000,
+        description: "Phấn má sắc hồng nhẹ nhàng và nữ tính.",
+        image: "images/product-03.jpg"
+    },
+
+    {
+        id: 9,
+        name: "VELVET CLOUD",
+        category: "lips",
+        categoryName: "SON MÔI",
+        price: 179000,
+        description: "Mềm như nhung, đẹp như mơ.",
+        image: "images/product-02.jpg"
+    },
+
+    {
+        id: 10,
+        name: "PURE MATTE",
+        category: "lips",
+        categoryName: "SON MÔI",
+        price: 179000,
+        description: "Sắc lì phủ môi, thần thái lên ngôi.",
+        image: "images/product-02.jpg"
+    },
+
+    {
+        id: 11,
+        name: "NUDE VELVET",
+        category: "lips",
+        categoryName: "SON MÔI",
+        price: 189000,
+        description: "Tông nude thanh lịch, phù hợp makeup hằng ngày.",
+        image: "images/product-02.jpg"
+    },
+
+    {
+        id: 12,
+        name: "GLOW PEARL",
+        category: "makeup",
+        categoryName: "PHẤN MẮT",
+        price: 249000,
+        description: "Ánh nhũ ngọc trai tinh tế, giúp đôi mắt thêm nổi bật.",
+        image: "images/product-04.jpg"
+    }
+
+];
