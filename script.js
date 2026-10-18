@@ -30,11 +30,11 @@ const products = [
 
     {
         id: 3,
-        name: "Soft Blush",
+        name: "Rose Flame",
         category: "makeup",
-        categoryName: "TRANG ĐIỂM",
+        categoryName: "PHẤN MẮT",
         price: 229000,
-        description: "Má hồng mịn nhẹ tạo hiệu ứng tự nhiên.",
+        description: "Biến Hóa Trong Từng Ánh Nhìn .",
         image: "images/product-03.jpg"
     },
 
@@ -70,21 +70,21 @@ const products = [
 
     {
         id: 7,
-        name: "Silky Foundation",
+        name: "Mocha Aura",
         category: "makeup",
-        categoryName: "TRANG ĐIỂM",
+        categoryName: "PHẤN MẮT",
         price: 329000,
-        description: "Kem nền mỏng nhẹ với độ che phủ tự nhiên.",
+        description: "Chạm Sắc Trầm , Tỏa Khí Chất.",
         image: "images/product-03.jpg"
     },
 
     {
         id: 8,
-        name: "Rose Blush",
+        name: "Peach Bloom",
         category: "makeup",
-        categoryName: "TRANG ĐIỂM",
+        categoryName: "PHẤN MẮT",
         price: 239000,
-        description: "Phấn má sắc hồng nhẹ nhàng và nữ tính.",
+        description: "Một Chút Đào, Vạn Nét Xinh.",
         image: "images/product-03.jpg"
     },
     {
