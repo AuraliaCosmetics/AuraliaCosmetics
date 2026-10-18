@@ -87,7 +87,6 @@ textarea {
     font-weight: 700;
 
     letter-spacing: 1px;
-
 }
 
 
@@ -1516,35 +1515,4 @@ footer {
         padding: 15px;
     }
 
-}
-.logo {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important;
-    white-space: nowrap !important;
-    gap: 7px !important;
-}
-
-.logo img {
-    width: 65px !important;
-    height: 65px !important;
-    min-width: 65px !important;
-    min-height: 65px !important;
-    max-width: 65px !important;
-    max-height: 65px !important;
-    object-fit: contain !important;
-    display: block !important;
-}
-
-.logo span {
-    font-size: 30px;
-    line-height: 1;
-    transform: translateY(-2px);
-}
-.footer-logo {
-    width: 50px;
-    height: 50px;
-    vertical-align: middle;
-    margin-right: 8px;
 }
