@@ -20,11 +20,11 @@ const products = [
 
     {
         id: 2,
-        name: "Velvet Lip Cream",
+        name: " LUMI TINT",
         category: "lips",
         categoryName: "SON MÔI",
         price: 199000,
-        description: "Son kem lì mềm mịn với màu sắc trẻ trung.",
+        description: "Một chạm, vạn sắc.",
         image: "images/product-02.jpg"
     },
 
@@ -50,11 +50,11 @@ const products = [
 
     {
         id: 5,
-        name: "Nude Lip Gloss",
+        name: "CLAY MOOD",
         category: "lips",
         categoryName: "SON MÔI",
         price: 179000,
-        description: "Son bóng trong trẻo cho đôi môi căng mọng.",
+        description: "Sắc đất, nét riêng.",
         image: "images/product-02.jpg"
     },
 
@@ -86,7 +86,35 @@ const products = [
         price: 239000,
         description: "Phấn má sắc hồng nhẹ nhàng và nữ tính.",
         image: "images/product-03.jpg"
-    }
+    },
+    
+    {
+        id: 9,
+        name: "VELVET CLOUD",
+        category: "lips",
+        categoryName: "SON MÔI",
+        price: 179000,
+        description: "Mềm như nhung đẹp như mơ.",
+        image: "images/product-02.jpg"
+    },
+    {
+        id: 10,
+        name: "PURE MATTE",
+        category: "lips",
+        categoryName: "SON MÔI",
+        price: 179000,
+        description: "Sắc lì phủ môi, thần thái lên ngôi.",
+        image: "images/product-02.jpg"
+    },
+   {
+        id: 11,
+        name: "CLAY MOOD",
+        category: "lips",
+        categoryName: "SON MÔI",
+        price: 179000,
+        description: "Sắc đất, nét riêng.",
+        image: "images/product-02.jpg"
+    },
 
 ];
 
