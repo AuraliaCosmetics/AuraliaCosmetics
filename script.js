@@ -40,8 +40,8 @@ const products = [
 
     {
         id: 4,
-        name: "Daily Moisture Cream",
-        category: "skincare",
+        name: "MOCHA AURA",
+        category: "makeup",
         categoryName: "PHẤN MẮT",
         price: 259000,
         description: "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
@@ -60,8 +60,8 @@ const products = [
 
     {
         id: 6,
-        name: "Pure Skin Toner",
-        category: "skincare",
+        name: "PEACH BLOOM",
+        category: "makeup",
         categoryName: "PHẤN MẮT",
         price: 219000,
         description: "Toner cân bằng và làm dịu làn da.",
