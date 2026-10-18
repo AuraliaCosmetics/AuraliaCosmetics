@@ -1528,7 +1528,7 @@ footer {
     z-index: 1;
     padding: 24px;
     border-radius: 16px;
-    background: rgba(255, 245, 247, 0.68);
+    background: rgba(255, 245, 247, 1);
     backdrop-filter: blur(6px);
     }
 
