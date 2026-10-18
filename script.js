@@ -86,6 +86,42 @@ const products = [
         price: 239000,
         description: "Phấn má sắc hồng nhẹ nhàng và nữ tính.",
         image: "images/product-03.jpg"
+    },
+    {
+        id: 9,
+        name: "Hydra Glow Essence",
+        category: "skincare",
+        categoryName: "CHĂM SÓC DA",
+        price: 269000,
+        description: "Tinh chất cấp ẩm giúp da mềm mại và rạng rỡ.",
+        image: "images/product-04.jpg"
+    },
+    {
+        id: 10,
+        name: "Peach Cheek Tint",
+        category: "makeup",
+        categoryName: "TRANG ĐIỂM",
+        price: 189000,
+        description: "Má hồng dạng kem dễ tán với sắc đào tự nhiên.",
+        image: "images/product-03.jpg"
+    },
+    {
+        id: 11,
+        name: "Rosewood Lipstick",
+        category: "lips",
+        categoryName: "SON MÔI",
+        price: 209000,
+        description: "Son môi mịn nhẹ với tông hồng gỗ thanh lịch.",
+        image: "images/product-02.jpg"
+    },
+    {
+        id: 12,
+        name: "Calming Face Mist",
+        category: "skincare",
+        categoryName: "CHĂM SÓC DA",
+        price: 199000,
+        description: "Xịt khoáng làm dịu và bổ sung độ ẩm tức thì.",
+        image: "images/product-01.jpg"
     }
 
 ];
