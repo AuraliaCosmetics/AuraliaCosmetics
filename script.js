@@ -106,15 +106,6 @@ const products = [
         description: "Sắc lì phủ môi, thần thái lên ngôi.",
         image: "images/product-02.jpg"
     },
-   {
-        id: 11,
-        name: "CLAY MOOD",
-        category: "lips",
-        categoryName: "SON MÔI",
-        price: 179000,
-        description: "Sắc đất, nét riêng.",
-        image: "images/product-02.jpg"
-    },
 
 ];
 
