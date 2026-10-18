@@ -10,11 +10,11 @@ const products = [
 
     {
         id: 1,
-        name: "Glow Beauty Serum",
+        name: "Control Cushion",
         category: "skincare",
         categoryName: "CUSHION",
         price: 289000,
-        description: "Serum dưỡng sáng và cấp ẩm cho làn da.",
+        description: "Dành Riêng Cho Da Dầu Và Da Hỗn Hợp Thiên Dầu.",
         image: "images/product-01.jpg"
     },
 
@@ -40,11 +40,11 @@ const products = [
 
     {
         id: 4,
-        name: "Daily Moisture Cream",
+        name: "Glow Hydrating Cushion",
         category: "skincare",
         categoryName: "CUSHION",
         price: 259000,
-        description: "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
+        description: " Thiết Kế Dành Cho Làn Da Khô Và Thiếu Ẩm.",
         image: "images/product-04.jpg"
     },
 
