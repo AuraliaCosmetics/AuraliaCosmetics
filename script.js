@@ -10,9 +10,9 @@ const products = [
 
     {
         id: 1,
-        name: "Glow Beauty Serum",
-        category: "skincare",
-        categoryName: "CHĂM SÓC DA",
+        name: "ROSE FLAME",
+        category: "makeup",
+        categoryName: "PHẤN MẮT",
         price: 289000,
         description: "Serum dưỡng sáng và cấp ẩm cho làn da.",
         image: "images/product-01.jpg"
@@ -42,7 +42,7 @@ const products = [
         id: 4,
         name: "Daily Moisture Cream",
         category: "skincare",
-        categoryName: "CHĂM SÓC DA",
+        categoryName: "PHẤN MẮT",
         price: 259000,
         description: "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
         image: "images/product-04.jpg"
@@ -62,7 +62,7 @@ const products = [
         id: 6,
         name: "Pure Skin Toner",
         category: "skincare",
-        categoryName: "CHĂM SÓC DA",
+        categoryName: "PHẤN MẮT",
         price: 219000,
         description: "Toner cân bằng và làm dịu làn da.",
         image: "images/product-01.jpg"
