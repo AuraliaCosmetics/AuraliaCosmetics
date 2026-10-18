@@ -12,7 +12,7 @@ const products = [
         id: 1,
         name: "Glow Beauty Serum",
         category: "skincare",
-        categoryName: "CHĂM SÓC DA",
+        categoryName: "CUSHION",
         price: 289000,
         description: "Serum dưỡng sáng và cấp ẩm cho làn da.",
         image: "images/product-01.jpg"
@@ -20,11 +20,11 @@ const products = [
 
     {
         id: 2,
-        name: "Velvet Lip Cream",
+        name: "Lumi Tint",
         category: "lips",
         categoryName: "SON MÔI",
         price: 199000,
-        description: "Son kem lì mềm mịn với màu sắc trẻ trung.",
+        description: "Một Chạm, Vạn Sắc.",
         image: "images/product-02.jpg"
     },
 
@@ -42,7 +42,7 @@ const products = [
         id: 4,
         name: "Daily Moisture Cream",
         category: "skincare",
-        categoryName: "CHĂM SÓC DA",
+        categoryName: "CUSHION",
         price: 259000,
         description: "Kem dưỡng ẩm nhẹ dịu sử dụng hàng ngày.",
         image: "images/product-04.jpg"
@@ -50,11 +50,11 @@ const products = [
 
     {
         id: 5,
-        name: "Nude Lip Gloss",
+        name: "Velvet Cloud",
         category: "lips",
         categoryName: "SON MÔI",
         price: 179000,
-        description: "Son bóng trong trẻo cho đôi môi căng mọng.",
+        description: "Mềm Như Nhung, Đẹp Như Mơ.",
         image: "images/product-02.jpg"
     },
 
@@ -62,7 +62,7 @@ const products = [
         id: 6,
         name: "Pure Skin Toner",
         category: "skincare",
-        categoryName: "CHĂM SÓC DA",
+        categoryName: "CUSHION",
         price: 219000,
         description: "Toner cân bằng và làm dịu làn da.",
         image: "images/product-01.jpg"
@@ -91,7 +91,7 @@ const products = [
         id: 9,
         name: "Hydra Glow Essence",
         category: "skincare",
-        categoryName: "CHĂM SÓC DA",
+        categoryName: "CUSHION",
         price: 269000,
         description: "Tinh chất cấp ẩm giúp da mềm mại và rạng rỡ.",
         image: "images/product-04.jpg"
@@ -107,21 +107,21 @@ const products = [
     },
     {
         id: 11,
-        name: "Rosewood Lipstick",
+        name: "Pure Matte",
         category: "lips",
         categoryName: "SON MÔI",
         price: 209000,
-        description: "Son môi mịn nhẹ với tông hồng gỗ thanh lịch.",
+        description: "Sắc Lì Phủ Môi, Thần Thái Lên Ngôi.",
         image: "images/product-02.jpg"
     },
     {
         id: 12,
-        name: "Calming Face Mist",
-        category: "skincare",
-        categoryName: "CHĂM SÓC DA",
+        name: "Clay Mood",
+        category: "lips",
+        categoryName: "SON MÔI",
         price: 199000,
-        description: "Xịt khoáng làm dịu và bổ sung độ ẩm tức thì.",
-        image: "images/product-01.jpg"
+        description: "Sắc Đất, Nét Riêng.",
+        image: "images/product-02.jpg"
     }
 
 ];
