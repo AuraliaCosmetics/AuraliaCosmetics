@@ -92,11 +92,11 @@ textarea {
 
     letter-spacing: 1px;
 
-    transform: translate(0px, -5px);
+    transform: translate(0px, -10px);
 }
 .logo img {
-    width: 15px;
-    height: 15px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
 }
 
