@@ -57,12 +57,76 @@ async function renderPost() {
 
         <h1 class="post-title">${escapeHtml(post.title)}</h1>
 
-        ${post.image
-            ? `<img class="post-cover" src="${post.image}" alt="${escapeHtml(post.title)}">`
-            : ""}
+        ${renderGallery(post)}
 
-        <div class="post-body">${escapeHtml(post.content)}</div>
+        <div class="post-body">${renderContent(post)}</div>
     `;
+
+}
+
+function getCovers(post) {
+
+    if (Array.isArray(post.images) && post.images.length) return post.images;
+
+    return post.image ? [post.image] : [];
+
+}
+
+function renderGallery(post) {
+
+    const covers = getCovers(post);
+
+    if (!covers.length) return "";
+
+    const alt = escapeHtml(post.title);
+
+    if (covers.length === 1) {
+
+        return `<img class="post-cover" src="${covers[0]}" alt="${alt}">`;
+
+    }
+
+    const thumbs = covers.map((src, i) => `
+        <img class="gallery-thumb${i === 0 ? " active" : ""}"
+             src="${src}" alt="${alt}"
+             onclick="showCover(${i})">
+    `).join("");
+
+    return `
+        <div class="post-gallery">
+            <img id="galleryMain" class="post-cover" src="${covers[0]}" alt="${alt}">
+            <div class="gallery-thumbs">${thumbs}</div>
+        </div>
+    `;
+
+}
+
+function showCover(index) {
+
+    const thumbs = document.querySelectorAll(".gallery-thumb");
+
+    document.getElementById("galleryMain").src = thumbs[index].src;
+
+    thumbs.forEach((t, i) => t.classList.toggle("active", i === index));
+
+}
+
+function renderContent(post) {
+
+    const images = post.contentImages || [];
+
+    return escapeHtml(post.content || "").replace(
+        /\[\[img:(\d+)\]\]/g,
+        function(_, n) {
+
+            const src = images[Number(n)];
+
+            return src
+                ? `<img class="post-inline-img" src="${src}" alt="">`
+                : "";
+
+        }
+    );
 
 }
 

@@ -435,7 +435,7 @@
                     id="blogWriteBtn"
                     class="blog-write-btn"
                     style="display:none"
-                    onclick="toggleBlogForm()">
+                    onclick="newBlogPost()">
                 ✎ Đăng bài mới
             </button>
 
@@ -489,26 +489,49 @@
                    type="text"
                    placeholder="Auralia Cosmetics">
 
-            <label for="blogImageFile">Ảnh bìa (tuỳ chọn)</label>
+            <label for="blogImageFile">Ảnh bìa (tuỳ chọn, chọn được nhiều ảnh)</label>
             <input id="blogImageFile"
                    type="file"
-                   accept="image/*">
+                   accept="image/*"
+                   multiple
+                   onchange="addCoverImages(this)">
 
-            <label for="blogContent">Nội dung</label>
-            <textarea id="blogContent"
-                      placeholder="Viết nội dung bài viết..."
-                      required></textarea>
+            <div id="coverPreview" class="cover-preview"></div>
+
+            <label>Nội dung</label>
+
+            <div class="editor-toolbar">
+                <button type="button"
+                        class="editor-btn"
+                        onclick="document.getElementById('blogInlineFile').click()">
+                    🖼 Chèn ảnh
+                </button>
+                <span class="editor-hint">hoặc dán (Ctrl+V) ảnh trực tiếp vào nội dung</span>
+            </div>
+
+            <input id="blogInlineFile"
+                   type="file"
+                   accept="image/*"
+                   multiple
+                   style="display:none"
+                   onchange="insertImagesFromInput(this)">
+
+            <div id="blogContent"
+                 class="blog-editor"
+                 contenteditable="true"
+                 data-placeholder="Viết nội dung bài viết..."></div>
 
             <div class="blog-form-buttons">
 
                 <button type="submit"
+                        id="blogSubmitBtn"
                         class="checkout">
                     ĐĂNG BÀI
                 </button>
 
                 <button type="button"
                         class="blog-cancel"
-                        onclick="toggleBlogForm()">
+                        onclick="closeBlogForm()">
                     Hủy
                 </button>
 
