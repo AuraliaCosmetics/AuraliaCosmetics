@@ -406,6 +406,109 @@
 </section>
 
 
+<!-- ================= BLOG ================= -->
+
+<section id="info" class="blog-section">
+
+    <div class="blog-inner">
+
+        <div class="section-title">
+
+            <span>
+                AURALIA BLOG
+            </span>
+
+            <h2>
+                Tin tức &amp; làm đẹp
+            </h2>
+
+            <p>
+                Chia sẻ mới nhất từ AuraliaCosmetics.
+            </p>
+
+        </div>
+
+
+        <div class="blog-actions">
+
+            <button type="button"
+                    class="blog-write-btn"
+                    onclick="toggleBlogForm()">
+                ✎ Đăng bài mới
+            </button>
+
+        </div>
+
+
+        <form id="blogForm"
+              class="blog-form"
+              onsubmit="submitBlogPost(event)">
+
+            <label for="blogTitle">Tiêu đề</label>
+            <input id="blogTitle"
+                   type="text"
+                   placeholder="Tiêu đề bài viết"
+                   required>
+
+            <label for="blogAuthor">Tác giả</label>
+            <input id="blogAuthor"
+                   type="text"
+                   placeholder="Auralia Cosmetics">
+
+            <label for="blogImageFile">Ảnh bìa (tuỳ chọn)</label>
+            <input id="blogImageFile"
+                   type="file"
+                   accept="image/*">
+
+            <label for="blogContent">Nội dung</label>
+            <textarea id="blogContent"
+                      placeholder="Viết nội dung bài viết..."
+                      required></textarea>
+
+            <div class="blog-form-buttons">
+
+                <button type="submit"
+                        class="checkout">
+                    ĐĂNG BÀI
+                </button>
+
+                <button type="button"
+                        class="blog-cancel"
+                        onclick="toggleBlogForm()">
+                    Hủy
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <div id="blogGrid"
+             class="blog-grid">
+        </div>
+
+    </div>
+
+</section>
+
+
+<div id="blogReader"
+     class="modal">
+
+    <div class="modal-box blog-reader-box">
+
+        <button class="close-modal"
+                onclick="closeBlogReader()">
+            ×
+        </button>
+
+        <div id="blogReaderContent"></div>
+
+    </div>
+
+</div>
+
+
 <!-- ================= PROMOTION ================= -->
 
 <section class="promotion">
