@@ -1724,3 +1724,75 @@ footer {
     }
 
 }
+
+
+/* ================= BLOG POST PAGE ================= */
+
+.post-page {
+    max-width: 760px;
+    margin: 40px auto 100px;
+    padding: 0 25px;
+}
+
+.post-back {
+    display: inline-block;
+    color: var(--pink-dark);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.post-back:hover {
+    text-decoration: underline;
+}
+
+.post-meta {
+    color: var(--pink-dark);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.post-title {
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    line-height: 1.25;
+    margin: 12px 0 25px;
+}
+
+.post-cover {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.post-body {
+    white-space: pre-wrap;
+    line-height: 1.9;
+    font-size: 16px;
+    color: var(--black);
+}
+
+.post-notfound {
+    text-align: center;
+    color: var(--gray);
+    padding: 80px 0;
+}
+
+@media(max-width: 600px) {
+    .post-title {
+        font-size: 28px;
+    }
+}
+
+
+.blog-login-btn {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--dark);
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 8px;
+}

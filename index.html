@@ -432,12 +432,46 @@
         <div class="blog-actions">
 
             <button type="button"
+                    id="blogWriteBtn"
                     class="blog-write-btn"
+                    style="display:none"
                     onclick="toggleBlogForm()">
                 ✎ Đăng bài mới
             </button>
 
+            <button type="button"
+                    id="blogLoginBtn"
+                    class="blog-login-btn"
+                    onclick="toggleLoginForm()">
+                Đăng nhập quản trị
+            </button>
+
+            <button type="button"
+                    id="blogLogoutBtn"
+                    class="blog-login-btn"
+                    style="display:none"
+                    onclick="logoutAdmin()">
+                Đăng xuất
+            </button>
+
         </div>
+
+
+        <form id="loginForm"
+              class="blog-form"
+              onsubmit="loginAdmin(event)">
+
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" required>
+
+            <label for="loginPassword">Mật khẩu</label>
+            <input id="loginPassword" type="password" required>
+
+            <div class="blog-form-buttons">
+                <button type="submit" class="checkout">ĐĂNG NHẬP</button>
+            </div>
+
+        </form>
 
 
         <form id="blogForm"
@@ -490,23 +524,6 @@
     </div>
 
 </section>
-
-
-<div id="blogReader"
-     class="modal">
-
-    <div class="modal-box blog-reader-box">
-
-        <button class="close-modal"
-                onclick="closeBlogReader()">
-            ×
-        </button>
-
-        <div id="blogReaderContent"></div>
-
-    </div>
-
-</div>
 
 
 <!-- ================= PROMOTION ================= -->
@@ -853,6 +870,10 @@
 </div>
 
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="script.js"></script>
 
 </body>

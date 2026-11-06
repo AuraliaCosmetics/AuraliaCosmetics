@@ -777,11 +777,13 @@ function closeMenu() {
 }
 
 
-/* ================= BLOG ================= */
+/* ================= BLOG (Firebase) ================= */
+
+const auth = firebase.auth();
 
 let blogPosts = [];
 
-let blogImageData = "";
+let isAdmin = false;
 
 
 function escapeHtml(text) {
@@ -795,45 +797,29 @@ function escapeHtml(text) {
 }
 
 
-function loadBlog() {
+async function loadBlog() {
 
     try {
 
-        const saved =
-            localStorage.getItem("AuraliaCosmeticsBlog");
+        const snap = await db
+            .collection("posts")
+            .orderBy("createdAt", "desc")
+            .get();
 
-        blogPosts = saved ? JSON.parse(saved) : [];
+        blogPosts = snap.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
 
     } catch (error) {
+
+        console.error(error);
 
         blogPosts = [];
 
     }
 
-}
-
-
-function saveBlog() {
-
-    try {
-
-        localStorage.setItem(
-            "AuraliaCosmeticsBlog",
-            JSON.stringify(blogPosts)
-        );
-
-        return true;
-
-    } catch (error) {
-
-        alert(
-            "Không thể lưu bài viết (bộ nhớ trình duyệt đầy). " +
-            "Hãy thử dùng ảnh nhỏ hơn."
-        );
-
-        return false;
-
-    }
+    renderBlog();
 
 }
 
@@ -867,9 +853,16 @@ function renderBlog() {
             ? `<img src="${post.image}" alt="${escapeHtml(post.title)}">`
             : "A";
 
+        const deleteBtn = isAdmin
+            ? `<button class="blog-delete"
+                       onclick="event.stopPropagation(); deleteBlogPost('${post.id}')">
+                   Xóa
+               </button>`
+            : "";
+
         return `
             <article class="blog-card"
-                     onclick="openBlogPost(${post.id})">
+                     onclick="openBlogPost('${post.id}')">
 
                 <div class="blog-card-image">
                     ${image}
@@ -887,11 +880,7 @@ function renderBlog() {
 
                     <div class="blog-card-footer">
                         <span class="blog-card-meta">ĐỌC TIẾP →</span>
-
-                        <button class="blog-delete"
-                                onclick="event.stopPropagation(); deleteBlogPost(${post.id})">
-                            Xóa
-                        </button>
+                        ${deleteBtn}
                     </div>
 
                 </div>
@@ -938,7 +927,7 @@ function resizeImage(file, callback) {
                 .getContext("2d")
                 .drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            callback(canvas.toDataURL("image/jpeg", 0.8));
+            callback(canvas.toDataURL("image/jpeg", 0.75));
 
         };
 
@@ -967,18 +956,22 @@ function resizeImage(file, callback) {
 }
 
 
-function submitBlogPost(event) {
+async function submitBlogPost(event) {
 
     event.preventDefault();
+
+    const form = event.target;
 
     const file =
         document.getElementById("blogImageFile").files[0];
 
-    const finish = function(image) {
+    const image = file
+        ? await new Promise(resolve => resizeImage(file, resolve))
+        : "";
 
-        const post = {
+    try {
 
-            id: Date.now(),
+        await db.collection("posts").add({
 
             title:
                 document.getElementById("blogTitle").value.trim(),
@@ -990,101 +983,135 @@ function submitBlogPost(event) {
             content:
                 document.getElementById("blogContent").value.trim(),
 
-            image: image || "",
+            image: image,
 
-            date: new Date().toLocaleDateString("vi-VN")
+            date: new Date().toLocaleDateString("vi-VN"),
 
-        };
+            createdAt:
+                firebase.firestore.FieldValue.serverTimestamp()
 
-        blogPosts.unshift(post);
+        });
 
-        if (!saveBlog()) {
+        form.reset();
 
-            blogPosts.shift();
+        form.classList.remove("active");
 
-            return;
+        await loadBlog();
 
-        }
+    } catch (error) {
 
-        renderBlog();
+        console.error(error);
 
-        event.target.reset();
-
-        document
-            .getElementById("blogForm")
-            .classList.remove("active");
-
-    };
-
-    if (file) {
-
-        resizeImage(file, finish);
-
-    } else {
-
-        finish("");
+        alert("Không đăng được bài: " + error.message);
 
     }
 
 }
 
 
-function deleteBlogPost(id) {
+async function deleteBlogPost(id) {
 
     if (!confirm("Bạn có chắc muốn xóa bài viết này?")) return;
 
-    blogPosts = blogPosts.filter(post => post.id !== id);
+    try {
 
-    saveBlog();
+        await db.collection("posts").doc(id).delete();
 
-    renderBlog();
+        await loadBlog();
+
+    } catch (error) {
+
+        alert("Không xóa được bài: " + error.message);
+
+    }
 
 }
 
 
 function openBlogPost(id) {
 
-    const post = blogPosts.find(item => item.id === id);
-
-    if (!post) return;
-
-    document.getElementById("blogReaderContent").innerHTML = `
-        <div class="blog-card-meta">
-            ${escapeHtml(post.author)} · ${escapeHtml(post.date)}
-        </div>
-
-        <h2>${escapeHtml(post.title)}</h2>
-
-        ${post.image ? `<img src="${post.image}" alt="">` : ""}
-
-        <div class="blog-reader-text">${escapeHtml(post.content)}</div>
-    `;
-
-    document
-        .getElementById("blogReader")
-        .classList.add("active");
+    window.location.href = "post.html?id=" + id;
 
 }
 
 
-function closeBlogReader() {
+/* ================= ADMIN LOGIN ================= */
+
+function toggleLoginForm() {
 
     document
-        .getElementById("blogReader")
-        .classList.remove("active");
+        .getElementById("loginForm")
+        .classList.toggle("active");
 
 }
+
+
+function loginAdmin(event) {
+
+    event.preventDefault();
+
+    auth
+        .signInWithEmailAndPassword(
+            document.getElementById("loginEmail").value.trim(),
+            document.getElementById("loginPassword").value
+        )
+        .then(() => {
+
+            event.target.reset();
+
+            event.target.classList.remove("active");
+
+        })
+        .catch(() => {
+
+            alert("Email hoặc mật khẩu không đúng.");
+
+        });
+
+}
+
+
+function logoutAdmin() {
+
+    auth.signOut();
+
+}
+
+
+function updateAdminUI() {
+
+    document.getElementById("blogWriteBtn").style.display =
+        isAdmin ? "inline-block" : "none";
+
+    document.getElementById("blogLogoutBtn").style.display =
+        isAdmin ? "inline-block" : "none";
+
+    document.getElementById("blogLoginBtn").style.display =
+        isAdmin ? "none" : "inline-block";
+
+    if (!isAdmin) {
+
+        document.getElementById("blogForm").classList.remove("active");
+
+    }
+
+}
+
+
+auth.onAuthStateChanged(function(user) {
+
+    isAdmin = !!user;
+
+    updateAdminUI();
+
+    renderBlog();
+
+});
 
 
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
-
-        loadBlog();
-
-        renderBlog();
-
-    }
+    loadBlog
 );
 
 
