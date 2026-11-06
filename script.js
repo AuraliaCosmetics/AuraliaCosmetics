@@ -777,6 +777,317 @@ function closeMenu() {
 }
 
 
+/* ================= BLOG ================= */
+
+let blogPosts = [];
+
+let blogImageData = "";
+
+
+function escapeHtml(text) {
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+function loadBlog() {
+
+    try {
+
+        const saved =
+            localStorage.getItem("AuraliaCosmeticsBlog");
+
+        blogPosts = saved ? JSON.parse(saved) : [];
+
+    } catch (error) {
+
+        blogPosts = [];
+
+    }
+
+}
+
+
+function saveBlog() {
+
+    try {
+
+        localStorage.setItem(
+            "AuraliaCosmeticsBlog",
+            JSON.stringify(blogPosts)
+        );
+
+        return true;
+
+    } catch (error) {
+
+        alert(
+            "Không thể lưu bài viết (bộ nhớ trình duyệt đầy). " +
+            "Hãy thử dùng ảnh nhỏ hơn."
+        );
+
+        return false;
+
+    }
+
+}
+
+
+function renderBlog() {
+
+    const grid = document.getElementById("blogGrid");
+
+    if (!grid) return;
+
+    if (blogPosts.length === 0) {
+
+        grid.innerHTML = `
+            <div class="blog-empty">
+                Chưa có bài viết nào.
+            </div>
+        `;
+
+        return;
+
+    }
+
+    grid.innerHTML = blogPosts.map(post => {
+
+        const excerpt =
+            post.content.length > 120
+                ? post.content.slice(0, 120) + "..."
+                : post.content;
+
+        const image = post.image
+            ? `<img src="${post.image}" alt="${escapeHtml(post.title)}">`
+            : "A";
+
+        return `
+            <article class="blog-card"
+                     onclick="openBlogPost(${post.id})">
+
+                <div class="blog-card-image">
+                    ${image}
+                </div>
+
+                <div class="blog-card-body">
+
+                    <div class="blog-card-meta">
+                        ${escapeHtml(post.author)} · ${escapeHtml(post.date)}
+                    </div>
+
+                    <h3>${escapeHtml(post.title)}</h3>
+
+                    <p>${escapeHtml(excerpt)}</p>
+
+                    <div class="blog-card-footer">
+                        <span class="blog-card-meta">ĐỌC TIẾP →</span>
+
+                        <button class="blog-delete"
+                                onclick="event.stopPropagation(); deleteBlogPost(${post.id})">
+                            Xóa
+                        </button>
+                    </div>
+
+                </div>
+
+            </article>
+        `;
+
+    }).join("");
+
+}
+
+
+function toggleBlogForm() {
+
+    document
+        .getElementById("blogForm")
+        .classList.toggle("active");
+
+}
+
+
+function resizeImage(file, callback) {
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        const img = new Image();
+
+        img.onload = function() {
+
+            const max = 800;
+
+            const scale =
+                Math.min(1, max / Math.max(img.width, img.height));
+
+            const canvas = document.createElement("canvas");
+
+            canvas.width = img.width * scale;
+
+            canvas.height = img.height * scale;
+
+            canvas
+                .getContext("2d")
+                .drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            callback(canvas.toDataURL("image/jpeg", 0.8));
+
+        };
+
+        img.onerror = function() {
+
+            alert("Không đọc được ảnh này, bài viết sẽ được đăng không kèm ảnh.");
+
+            callback("");
+
+        };
+
+        img.src = e.target.result;
+
+    };
+
+    reader.onerror = function() {
+
+        alert("Không đọc được ảnh này, bài viết sẽ được đăng không kèm ảnh.");
+
+        callback("");
+
+    };
+
+    reader.readAsDataURL(file);
+
+}
+
+
+function submitBlogPost(event) {
+
+    event.preventDefault();
+
+    const file =
+        document.getElementById("blogImageFile").files[0];
+
+    const finish = function(image) {
+
+        const post = {
+
+            id: Date.now(),
+
+            title:
+                document.getElementById("blogTitle").value.trim(),
+
+            author:
+                document.getElementById("blogAuthor").value.trim()
+                || "Auralia Cosmetics",
+
+            content:
+                document.getElementById("blogContent").value.trim(),
+
+            image: image || "",
+
+            date: new Date().toLocaleDateString("vi-VN")
+
+        };
+
+        blogPosts.unshift(post);
+
+        if (!saveBlog()) {
+
+            blogPosts.shift();
+
+            return;
+
+        }
+
+        renderBlog();
+
+        event.target.reset();
+
+        document
+            .getElementById("blogForm")
+            .classList.remove("active");
+
+    };
+
+    if (file) {
+
+        resizeImage(file, finish);
+
+    } else {
+
+        finish("");
+
+    }
+
+}
+
+
+function deleteBlogPost(id) {
+
+    if (!confirm("Bạn có chắc muốn xóa bài viết này?")) return;
+
+    blogPosts = blogPosts.filter(post => post.id !== id);
+
+    saveBlog();
+
+    renderBlog();
+
+}
+
+
+function openBlogPost(id) {
+
+    const post = blogPosts.find(item => item.id === id);
+
+    if (!post) return;
+
+    document.getElementById("blogReaderContent").innerHTML = `
+        <div class="blog-card-meta">
+            ${escapeHtml(post.author)} · ${escapeHtml(post.date)}
+        </div>
+
+        <h2>${escapeHtml(post.title)}</h2>
+
+        ${post.image ? `<img src="${post.image}" alt="">` : ""}
+
+        <div class="blog-reader-text">${escapeHtml(post.content)}</div>
+    `;
+
+    document
+        .getElementById("blogReader")
+        .classList.add("active");
+
+}
+
+
+function closeBlogReader() {
+
+    document
+        .getElementById("blogReader")
+        .classList.remove("active");
+
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadBlog();
+
+        renderBlog();
+
+    }
+);
+
+
 /* ================= START ================= */
 
 document.addEventListener(
